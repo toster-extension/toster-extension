@@ -1,0 +1,32 @@
+language: node_js
+
+dist: trusty
+
+sudo: false
+
+node_js:
+  - '10'
+
+notifications:
+  email: false
+
+addons:
+  chrome: stable
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+before_script:
+  - cp .env.dist .env
+  - yarn install
+  - yarn tags --pages 1 --output assets/tags.json
+
+script:
+  - yarn build
+  - yarn cpd
+  - yarn lint
+  - yarn lint:ext
+  - yarn test
+  - yarn clean

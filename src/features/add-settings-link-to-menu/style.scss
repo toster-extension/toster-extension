@@ -1,0 +1,5 @@
+body[data-feature-addsettingslinktomenu="enabled"] {
+  & .open-options-tab {
+    cursor: pointer;
+  }
+}

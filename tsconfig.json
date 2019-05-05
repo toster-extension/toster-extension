@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "outDir": "./extension",
+    "target": "es2015",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "lib": ["es6", "dom", "es2017"],
+    "baseUrl": ".",
+    "sourceMap": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true,
+    "pretty": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@/*": ["src/*"],
+      "assets/*": ["assets/*"]
+    }
+  },
+  "include": [
+    "*.ts",
+    "src/**/*",
+    "global.d.ts",
+    "vue-global.d.ts",
+    "vue-module.d.ts"
+  ],
+  "exclude": ["extension", "node_modules"]
+}

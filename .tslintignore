@@ -1,0 +1,7 @@
+*.d.ts
+logs/**/*
+test/**/*
+public/**/*
+vendor/**/*
+node_modules/**/*
+assets/generated/**/*

@@ -1,0 +1,22 @@
+body[data-feature-showauthorpmlink="enabled"] {
+  .user-summary__desc {
+    margin-bottom: 2px;
+
+    .habr-pm-link {
+      color: #409fde;
+      border-bottom: 1px dotted;
+      font-size: 14px !important;
+
+      &:hover,
+      &:active,
+      &:visited {
+        text-decoration: none;
+      }
+
+      @media (max-width: 350px) {
+        display: block;
+        width: max-content;
+      }
+    }
+  }
+}

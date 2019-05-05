@@ -1,0 +1,10 @@
+{
+  "threshold": 0.1,
+  "reporters": ["console", "html", "badge"],
+  "ignore": ["extension/**/*.js", "extension/**/*.css", "extension/**/*.json"],
+  "tokensToSkip": ["comment", "empty", "new_line", "ignore"],
+  "blame": true,
+  "silent": false,
+  "output": "./assets",
+  "format": "typescript,javascript,css,scss,sass"
+}

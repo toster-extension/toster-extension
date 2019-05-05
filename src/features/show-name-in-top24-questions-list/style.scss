@@ -1,0 +1,13 @@
+body[data-feature-shownameintop24questionslist="enabled"],
+body[data-feature-shownickintop24questionslist="enabled"] {
+  .content-list.content-list_sidebar-block {
+    .content-list__item[data-question-id] {
+      .user-summary__desc {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: 0 !important;
+      }
+    }
+  }
+}

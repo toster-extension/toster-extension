@@ -1,0 +1,11 @@
+body[data-feature-userprofilepreview="enabled"] {
+  .tippy-tooltip {
+    text-align: left !important;
+  }
+
+  .user-summary__desc {
+    @media (min-width: 350px) {
+      width: max-content !important;
+    }
+  }
+}
