@@ -1,0 +1,41 @@
+{
+  "gitbook": "3.x.x",
+  "root": "./",
+  "generator": "site",
+  "title": "Toster Extension",
+  "description": "Улучшает возможности сайта toster.ru, добавляя недостающий функционал, либо изменяя существующий.",
+  "plugins": [
+    "edit-link",
+    "github",
+    "theme-vuejs@git+https://github.com/pearofducks/gitbook-plugin-theme-vuejs.git",
+    "-fontsettings"
+  ],
+  "pluginsConfig": {
+    "edit-link": {
+      "base": "https://github.com/toster-extension/toster-extension/tree/master/gitbook",
+      "label": "Изменить страницу"
+    },
+    "github": {
+      "url": "https://github.com/toster-extension/toster-extension/"
+    }
+  },
+  "links": {
+    "sidebar": {
+      "Предложить фичу": "https://github.com/toster-extension/toster-extension/issues/new?assignees=yarkovaleksei&labels=feature&template=-----------.md&title=",
+      "Сообщить о баге": "https://github.com/toster-extension/toster-extension/issues/new?assignees=yarkovaleksei&labels=bug&template=------.md&title="
+    },
+    "sharing": {
+      "google": true,
+      "facebook": true,
+      "twitter": true
+    }
+  },
+  "variables": {
+    "appName": "Toster Extension",
+    "appNameLower": "toster-extension",
+    "appVersion": "1.16.23",
+    "chromeLink": "https://chrome.google.com/webstore/detail/toster-extension/edbifjhhbolcnccchgdenjnlidcoadae",
+    "firefoxLink": "https://addons.mozilla.org/firefox/addon/toster-extension/",
+    "latestReleaseLink": "https://github.com/toster-extension/toster-extension/releases/latest"
+  }
+}

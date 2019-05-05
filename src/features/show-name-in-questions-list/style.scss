@@ -1,0 +1,31 @@
+body[data-feature-shownameinquestionslist="enabled"],
+body[data-feature-shownickinquestionslist="enabled"] {
+  & .content-list__item[data-question-id] {
+    .user-summary__desc {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-left: 0 !important;
+    }
+  }
+}
+
+body[data-feature-showauthorpmlink="enabled"] {
+  .habr-pm-link {
+    color: #409fde;
+    border-bottom: 1px dotted;
+    width: max-content;
+    line-height: 1em;
+    margin-left: 10px;
+
+    &:hover,
+    &:active,
+    &:visited {
+      text-decoration: none;
+    }
+
+    @media (max-width: 350px) {
+      margin-left: 0;
+    }
+  }
+}

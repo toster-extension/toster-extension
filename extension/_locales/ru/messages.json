@@ -1,0 +1,269 @@
+{
+  "extension_name": {
+    "message": "Toster Extension"
+  },
+  "extension_shortname": {
+    "message": "Toster Extension"
+  },
+  "extension_description": {
+    "message": "Расширение браузера Toster Extension. Улучшает возможности сайта toster.ru"
+  },
+  "flashMessagesOptionsChanged": {
+    "message": "Настройки $name$ изменены. Чтобы изменения вступили в силу необходимо обновить страницу.",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Toster Extension"
+      }
+    }
+  },
+  "notificationsUnreadTitle": {
+    "message": "Новые события на toster.ru"
+  },
+  "notificationsUnreadMessage": {
+    "message": "Непрочитанных уведомлений: $count$",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "0"
+      }
+    }
+  },
+  "tabQuestionPage": {
+    "message": "Страница вопроса"
+  },
+  "tabQuestionsList": {
+    "message": "Список вопросов"
+  },
+  "tabQuestionsTop24List": {
+    "message": "Список вопросов ТОП 24 часа"
+  },
+  "tabHideExcess": {
+    "message": "Скрыть лишнее"
+  },
+  "tabNotifications": {
+    "message": "Уведомления"
+  },
+  "tabPreview": {
+    "message": "Превью"
+  },
+  "tabUser": {
+    "message": "Пользователь"
+  },
+  "tabBlackLists": {
+    "message": "Черные списки"
+  },
+  "tabOthers": {
+    "message": "Разное"
+  },
+  "mostInterestingBlockTitle": {
+    "message": "Самое интересное за 24 часа"
+  },
+  "previewFirstContent": {
+    "message": "Загрузка..."
+  },
+  "pmLinkTitle": {
+    "message": "Написать в ЛС"
+  },
+  "pmLinkText": {
+    "message": "Написать"
+  },
+  "buttonOK": {
+    "message": "OK"
+  },
+  "buttonCancel": {
+    "message": "Отмена"
+  },
+  "buttonClean": {
+    "message": "Очистить список"
+  },
+  "buttonCleanQuestions": {
+    "message": "Очистить базу вопросов"
+  },
+  "buttonSaveBackup": {
+    "message": "Сохранить настройки"
+  },
+  "buttonLoadBackup": {
+    "message": "Восстановить настройки"
+  },
+  "backupErrorFormatFile": {
+    "message": "Неверный формат файла!"
+  },
+  "buttonDeleteNotDecisionAnswers": {
+    "message": "Удалить ответы не отмеченные решением"
+  },
+  "descriptionDeleteNotDecisionAnswers": {
+    "message": "Будут удалены ответы <strong>только</strong> с этой страницы"
+  },
+  "contextMenuFeedback": {
+    "message": "Оставить отзыв"
+  },
+  "contextMenuSendPM": {
+    "message": "Написать автору"
+  },
+  "submitFormPlaceholder": {
+    "message": "Жми Ctrl+Enter для отправки формы"
+  },
+  "codeSpoilerText": {
+    "message": "Код под спойлером"
+  },
+  "addTagPlaceholder": {
+    "message": "Введите имя тега"
+  },
+  "addAuthorPlaceholder": {
+    "message": "Введите имя или ник автора"
+  },
+  "msDelay": {
+    "message": "Задержка в миллисекундах"
+  },
+  "msInterval": {
+    "message": "Интервал в миллисекундах"
+  },
+  "playSound": {
+    "message": "Прослушать"
+  },
+  "optionsPageTitle": {
+    "message": "Настройки"
+  },
+  "optionsCleanListText": {
+    "message": "Точно очистить $what$?",
+    "placeholders": {
+      "what": {
+        "content": "$1",
+        "example": "список тегов"
+      }
+    }
+  },
+  "optionsToolbarTagsCount": {
+    "message": "Тегов в базе: $count$ шт.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "optionsToolbarQuestionsCount": {
+    "message": "Вопросов в базе: $count$ шт.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "optionsHideSolutionButton": {
+    "message": "Скрыть кнопку \"Отметить решением\" (для чужих вопросов)"
+  },
+  "optionsSwapAnswerAndSolutionButtons": {
+    "message": "Поменять местами кнопки \"Отметить решением\" и \"Нравится\""
+  },
+  "optionsHideVacanciesAndOrdersBlock": {
+    "message": "Скрыть блок с вакансиями и заказами"
+  },
+  "optionsHideRelatedIssuesBlock": {
+    "message": "Скрыть блок \"Похожие вопросы\""
+  },
+  "optionsHideRecomendationsBlock": {
+    "message": "Скрыть блок \"Рекомендуем\""
+  },
+  "optionsHideMostInterestingBlock": {
+    "message": "Скрыть блок \"Самое интересное за 24 часа\""
+  },
+  "optionsDoublePagination": {
+    "message": "Дублировать пагинацию над списком вопросов"
+  },
+  "optionsHideDecisionQuestions": {
+    "message": "Скрывать вопросы с решениями"
+  },
+  "optionsUseKeyboardSubmitForm": {
+    "message": "Использовать <kbd>Ctrl+Enter</kbd> для отправки формы"
+  },
+  "optionsSaveTextBeforeFormSending": {
+    "message": "Сохранять введенный в форму текст до отправки"
+  },
+  "optionsUseTagsBlackList": {
+    "message": "Включить черный список тегов"
+  },
+  "optionsShowNameInQuestionsList": {
+    "message": "Показывать имя автора"
+  },
+  "optionsShowNickInQuestionsList": {
+    "message": "Показывать ник автора"
+  },
+  "optionsShowTagsInQuestionsList": {
+    "message": "Показывать теги"
+  },
+  "optionsShowTagsImagesInQuestionsList": {
+    "message": "Показывать изображения тегов"
+  },
+  "optionsShowNameInTop24QuestionsList": {
+    "message": "Показывать имя автора"
+  },
+  "optionsShowNickInTop24QuestionsList": {
+    "message": "Показывать ник автора"
+  },
+  "optionsShowTagsInTop24QuestionsList": {
+    "message": "Показывать теги"
+  },
+  "optionsUseAuthorsBlackListForAnswersAndComments": {
+    "message": "Использовать черный список пользователей в ответах и комментариях"
+  },
+  "optionsUseAuthorsBlackList": {
+    "message": "Включить черный список пользователей"
+  },
+  "optionsWrapSpoilerCodeBlocks": {
+    "message": "Оборачивать примеры кода в спойлер"
+  },
+  "optionsMonospaceFont": {
+    "message": "Включить моноширинный шрифт для кода в вопросах/ответах/комментариях"
+  },
+  "optionsQuestionPreview": {
+    "message": "Включить превью вопроса при наведении на заголовок"
+  },
+  "optionsReplaceCodeInPreview": {
+    "message": "Вырезать примеры кода из превью вопроса"
+  },
+  "optionsUserProfilePreview": {
+    "message": "Включить превью профиля при наведении на имя юзера"
+  },
+  "optionsOpenLinksInNewTab": {
+    "message": "Открывать ссылки со страницы вопроса в новой вкладке"
+  },
+  "optionsShowAuthorPMLink": {
+    "message": "Показывать ссылку на ЛС юзера рядом с именем"
+  },
+  "optionsCheckNotifications": {
+    "message": "Включить реалтайм показ новых уведомлений"
+  },
+  "optionsShowNotifications": {
+    "message": "Включить показ всплывающих уведомлений"
+  },
+  "optionsShowNotificationsCountOnExtensionIcon": {
+    "message": "Показывать количество уведомлений на иконке расширения"
+  },
+  "optionsShowNotificationsCountOnFavicon": {
+    "message": "Показывать количество уведомлений на иконке сайта (favicon)"
+  },
+  "optionsUseNotificationSound": {
+    "message": "Включить звуковое уведомление"
+  },
+  "optionsDeleteNotDecisionAnswers": {
+    "message": "Показывать кнопку удаления ответов, не отмеченных решением"
+  },
+  "optionsNormalizeDate": {
+    "message": "Выводить даты в формате <strong>23 апр. 2019, в 15:17</strong>"
+  },
+  "optionsAddSettingsLinkToMenu": {
+    "message": "Добавить в меню ссылку на страницу настроек"
+  },
+  "optionsIconClickEvent": {
+    "message": "Событие клика по иконке расширения"
+  },
+  "optionsIconClickEventOpenSettings": {
+    "message": "Открыть настройки"
+  },
+  "optionsIconClickEventOpenToster": {
+    "message": "Открыть toster.ru"
+  }
+}

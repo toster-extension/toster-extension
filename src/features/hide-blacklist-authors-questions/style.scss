@@ -1,0 +1,31 @@
+body[data-feature-useauthorsblacklist="enabled"] {
+  a[role="toggle_question_comments"],
+  a[role="toggle_answer_comments"] {
+    span[data-hidden-counter]:not([data-hidden-counter="0"]) {
+      &:after {
+        content: ' (скрыто 'attr(data-hidden-counter)')' !important;
+      }
+    }
+  }
+
+  #answers {
+    .section-header__title[data-hidden-counter]:not([data-hidden-counter="0"]) {
+      &:after {
+        content: ' (скрыто 'attr(data-hidden-counter)')' !important;
+      }
+    }
+  }
+
+  #answers {
+    .section-header__counter.hidden-counter:not([data-hidden-counter]),
+    .section-header__counter.hidden-counter[data-hidden-counter="0"] {
+      &:before {
+        content: none !important;
+      }
+
+      &:after {
+        content: none !important;
+      }
+    }
+  }
+}

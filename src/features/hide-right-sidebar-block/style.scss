@@ -1,0 +1,18 @@
+body[data-feature-hidemostinterestingblock="enabled"][data-feature-hiderecomendationsblock="enabled"] {
+  & .dropdown__menu {
+    left: -160px !important;
+  }
+
+  & .page {
+      margin-right: 0px !important;
+  }
+
+  & .layout__footer {
+      margin-right: 0px !important;
+      background-color: #ffffff !important;
+  }
+
+  & .layout__body:before {
+    width: 0px !important;
+  }
+}
