@@ -7,6 +7,7 @@ import {
     AddSettingsLinkToMenu,
     DeleteNotDecisionAnswers,
     DoublePagination,
+    ExpandToFullWidth,
     FlashMessages,
     HideBlacklistAuthorsQuestions,
     HideBlacklistTagsQuestions,
@@ -14,6 +15,7 @@ import {
     HideRelatedIssuesBlock,
     HideRightSidebarBlock,
     HideSolutionButton,
+    HideTopPanel,
     HideVacanciesAndOrdersBlock,
     MonospaceFont,
     NormalizeDate,
@@ -196,6 +198,8 @@ class Toster {
             new FlashMessages(),
             new NormalizeDate(),
             new AddSettingsLinkToMenu(),
+            new HideTopPanel(),
+            new ExpandToFullWidth(),
         ];
 
         await Promise.all(

@@ -22,3 +22,4 @@
 - [Установка](install.md)
   - [Google Chrome](install.md#google-chrome)
   - [Firefox](install.md#firefox)
+  - [Opera](install.md#opera)

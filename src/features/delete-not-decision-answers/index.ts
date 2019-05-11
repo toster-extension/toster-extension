@@ -27,24 +27,24 @@ export class DeleteNotDecisionAnswers extends Feature {
 
     private removeAnswers (answerIds: string[]) {
         this.injectJavaScriptToPage(`
-(function () {
-    [${answerIds}].forEach(id => {
-        $.ajax({
-            url: '${TOSTER_URL}/answer/cm_remove',
-            method: 'post',
-            data: {
-                answer_id: String(id)
-            },
-            headers: {
-                'Accept': 'application/json, text/javascript',
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-            },
-            success: () => {
-                $('#answer_' + id).closest('li.content-list__item').remove();
-            }
+    (function () {
+        [${answerIds}].forEach(id => {
+            $.ajax({
+                url: '${TOSTER_URL}/answer/cm_remove',
+                method: 'post',
+                data: {
+                    answer_id: String(id)
+                },
+                headers: {
+                    'Accept': 'application/json, text/javascript',
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                },
+                success: () => {
+                    $('#answer_' + id).closest('li.content-list__item').remove();
+                }
+            });
         });
-    });
-})()`);
+    })()`);
     }
 
     private async showButton () {
@@ -94,6 +94,7 @@ export class DeleteNotDecisionAnswers extends Feature {
         );
         button.onclick = () => {
             this.removeAnswers(answerIds);
+            div.remove();
         };
 
         div.insertBefore(button, div.firstChild);

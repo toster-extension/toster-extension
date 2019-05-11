@@ -26,6 +26,8 @@ export * from './delete-not-decision-answers';
 export * from './flash-messages';
 export * from './normalize-date';
 export * from './add-settings-link-to-menu';
+export * from './hide-top-panel';
+export * from './expand-to-full-width';
 export * from './types';
 
 export const defaultFeaturesCollection: FeaturesCollection = {
@@ -71,4 +73,6 @@ export const defaultFeaturesCollection: FeaturesCollection = {
     deleteNotDecisionAnswers: false,
     normalizeDate: false,
     addSettingsLinkToMenu: false,
+    hideTopPanel: false,
+    expandToFullWidth: false,
 };

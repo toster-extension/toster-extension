@@ -23,7 +23,7 @@
                      track-by="name"
                      :placeholder="placeholder"
                      :options="options"
-                     :optionsLimit="500"
+                     :optionsLimit="50"
                      :multiple="true"
                      :taggable="true"
                      :hideSelected="true"
