@@ -36,6 +36,7 @@ export enum MessageType {
     NOTIFICATIONS_UPDATE = 6,
     SHOW_FLASH_MESSAGES = 7,
     OPEN_OPTIONS_PAGE = 8,
+    CLEAR_QUESTIONS = 9,
 }
 
 export interface Data {

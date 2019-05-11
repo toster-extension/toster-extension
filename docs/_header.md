@@ -4,3 +4,6 @@
 <a href="{{ book.firefoxLink }}" target="_blank">
   <img src="images/firefox.png" height="48" width="48">
 </a>
+<a href="{{ book.operaLink }}" target="_blank">
+  <img src="images/opera.png" height="48" width="48">
+</a>

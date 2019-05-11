@@ -1,0 +1,7 @@
+body[data-feature-expandtofullwidth="enabled"] {
+  & > .layout {
+    @media only screen and (min-width: 1200px) {
+      max-width: 100% !important;
+    }
+  }
+}

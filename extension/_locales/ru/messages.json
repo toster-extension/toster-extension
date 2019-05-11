@@ -167,6 +167,9 @@
   "optionsHideRecomendationsBlock": {
     "message": "Скрыть блок \"Рекомендуем\""
   },
+  "optionsHideTopPanel": {
+    "message": "Скрыть верхнюю панель со ссылками"
+  },
   "optionsHideMostInterestingBlock": {
     "message": "Скрыть блок \"Самое интересное за 24 часа\""
   },
@@ -256,6 +259,9 @@
   },
   "optionsAddSettingsLinkToMenu": {
     "message": "Добавить в меню ссылку на страницу настроек"
+  },
+  "optionsExpandToFullWidth": {
+    "message": "Растянуть сайт на 100% в ширину"
   },
   "optionsIconClickEvent": {
     "message": "Событие клика по иконке расширения"

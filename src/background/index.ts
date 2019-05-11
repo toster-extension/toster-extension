@@ -21,6 +21,12 @@ browser.omnibox.onInputEntered.addListener(omniboxOnInputEnteredHandler);
 
 browser.contextMenus.onClicked.addListener(contextMenusOnClickHandler);
 
+browser.runtime.onInstalled.addListener((details) => {
+    if (details.reason === 'update') {
+        app.clearDataBase();
+    }
+});
+
 if (process.env.NODE_ENV !== 'production') {
     const script = document.createElement('script');
     script.src = browser.runtime.getURL('hot-reload.js');

@@ -66,6 +66,9 @@ export class App {
                     case MessageType.OPEN_OPTIONS_PAGE:
                         browser.runtime.openOptionsPage();
                         break;
+                    case MessageType.CLEAR_QUESTIONS:
+                        this.clearDataBase();
+                        break;
                 }
 
                 if (data) {
@@ -127,6 +130,10 @@ export class App {
             default:
                 break;
         }
+    }
+
+    clearDataBase (): void {
+        this.questionsStorage.set<Question[]>('questions', []);
     }
 
     async checkNotifications () {

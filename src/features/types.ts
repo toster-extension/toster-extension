@@ -43,6 +43,8 @@ export interface FeaturesCollection {
     deleteNotDecisionAnswers?: boolean
     normalizeDate?: boolean
     addSettingsLinkToMenu?: boolean
+    hideTopPanel?: boolean
+    expandToFullWidth?: boolean
 }
 
 export enum FeaturesAttribute {
@@ -78,6 +80,8 @@ export enum FeaturesAttribute {
     DELETE_NOT_DECISION_ANSWERS = 'DELETE_NOT_DECISION_ANSWERS',
     FLASH_MESSAGES = 'FLASH_MESSAGES',
     ADD_SETTINGS_LINK_TO_MENU = 'ADD_SETTINGS_LINK_TO_MENU',
+    HIDE_TOP_PANEL = 'HIDE_TOP_PANEL',
+    EXPAND_TO_FULL_WIDTH = 'EXPAND_TO_FULL_WIDTH',
 }
 
 export enum EventType {

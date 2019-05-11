@@ -109,7 +109,11 @@ export default class OptionsApp extends Vue {
     }
 
     get hideExcessBooleanOptions (): string[] {
-        return ['hideRecomendationsBlock', 'hideVacanciesAndOrdersBlock'];
+        return [
+            'hideRecomendationsBlock',
+            'hideVacanciesAndOrdersBlock',
+            'hideTopPanel',
+        ];
     }
 
     get previewBooleanOptions (): string[] {
@@ -133,6 +137,7 @@ export default class OptionsApp extends Vue {
             'deleteNotDecisionAnswers',
             'normalizeDate',
             'addSettingsLinkToMenu',
+            'expandToFullWidth',
         ];
     }
 
@@ -248,8 +253,10 @@ export default class OptionsApp extends Vue {
         this.$dialog
             .confirm(this.$i18n('optionsCleanListText', ['базу вопросов']))
             .then(() => {
-                this.questionsStorage.set<Question[]>('questions', []);
-                window.location.reload();
+                browser.runtime.sendMessage(<MessageData>{
+                    type: MessageType.CLEAR_QUESTIONS,
+                });
+                setTimeout(() => window.location.reload(), 1000);
             })
             .catch(() => {});
     }
