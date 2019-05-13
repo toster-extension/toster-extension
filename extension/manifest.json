@@ -5,7 +5,7 @@
   "name": "__MSG_extension_name__",
   "short_name": "__MSG_extension_shortname__",
   "description": "__MSG_extension_description__",
-  "version": "1.18.28",
+  "version": "1.18.29",
   "icons": {
     "16": "images/toster_logo_16.png",
     "24": "images/toster_logo_24.png",
