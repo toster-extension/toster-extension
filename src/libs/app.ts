@@ -118,14 +118,31 @@ export class App {
         }
     }
 
-    notifyHandler (notifyId: NotificationsType) {
+    async notifyHandler (notifyId: NotificationsType) {
         switch (notifyId) {
             case NotificationsType.UNREAD_NOTIFICATIONS:
-                browser.notifications.clear(notifyId).then(() => {
-                    browser.tabs.create({
-                        url: `${TOSTER_URL}${TOSTER_TRACKER_PATH}`,
-                    });
-                });
+                const tabs = await getAllTabs({ url: '*://*.toster.ru/*' });
+                const activeTab = get(tabs.filter((tab) => tab.active), null);
+                let callback: () => void;
+
+                if (!tabs.length) {
+                    callback = () => {
+                        browser.tabs.create({
+                            url: `${TOSTER_URL}${TOSTER_TRACKER_PATH}`,
+                        });
+                    };
+                } else {
+                    const tabId = activeTab ? activeTab.id : tabs[0].id;
+
+                    callback = () => {
+                        browser.tabs.update(tabId, {
+                            active: true,
+                        });
+                    };
+                }
+
+                await browser.notifications.clear(notifyId);
+                callback();
                 break;
             default:
                 break;
