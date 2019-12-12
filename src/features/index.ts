@@ -69,7 +69,7 @@ export const defaultFeaturesCollection: FeaturesCollection = {
     showNotificationsCountOnExtensionIcon: false,
     useNotificationSound: false,
     sound: 'sounds/1.mp3',
-    iconClickEvent: IconClickEvents.OPEN_SETTINGS,
+    iconClickEvent: IconClickEvents.OPEN_TOSTER,
     deleteNotDecisionAnswers: false,
     normalizeDate: false,
     addSettingsLinkToMenu: false,

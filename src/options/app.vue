@@ -19,7 +19,7 @@
         <div class="float-left buttons">
           <a class="btn btn-success"
              target="_blank"
-             :href="tosterUrl">toster.ru</a>
+             :href="tosterUrl">Тостер</a>
           <button class="btn btn-error"
                   type="button"
                   @click="cleanQuestions">{{ cleanQuestionsButtonText }}</button>

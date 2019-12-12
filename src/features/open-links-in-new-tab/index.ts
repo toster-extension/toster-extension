@@ -8,7 +8,7 @@ import { Feature } from '@/entity/feature';
 export class OpenLinksInNewTab extends Feature {
     async execute (): Promise<void> {
         const links = document.querySelectorAll(
-            '.page__body a[href^="http"]:not([href*="toster.ru"])'
+            '.page__body a[href^="http"]:not([href*="qna.habr.com"])'
         );
 
         this.eventBus.on(
