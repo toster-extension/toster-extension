@@ -121,8 +121,11 @@ export class App {
     async notifyHandler (notifyId: NotificationsType) {
         switch (notifyId) {
             case NotificationsType.UNREAD_NOTIFICATIONS:
-                const tabs = await getAllTabs({ url: '*://*.toster.ru/*' });
-                const activeTab = get(tabs.filter((tab) => tab.active), null);
+                const tabs = await getAllTabs({ url: '*://*.qna.habr.com/*' });
+                const activeTab = get(
+                    tabs.filter((tab) => tab.active),
+                    null
+                );
                 let callback: () => void;
 
                 if (!tabs.length) {
@@ -166,8 +169,11 @@ export class App {
             if (newEventsList) {
                 const items = newEventsList.querySelectorAll('li');
                 let count = items.length;
-                const tabs = await getAllTabs({ url: '*://*.toster.ru/*' });
-                const activeTab = get(tabs.filter((tab) => tab.active), 0);
+                const tabs = await getAllTabs({ url: '*://*.qna.habr.com/*' });
+                const activeTab = get(
+                    tabs.filter((tab) => tab.active),
+                    0
+                );
 
                 if (items.length > 3) {
                     const text = Array.from(items)
@@ -230,7 +236,7 @@ export class App {
     private async sendFlashMessagesToContentSctipt (
         flashMessages: FlashMessage[]
     ) {
-        const tabs = await getAllTabs({ url: '*://*.toster.ru/*' });
+        const tabs = await getAllTabs({ url: '*://*.qna.habr.com/*' });
 
         if (tabs.length) {
             for (const tab of tabs) {
@@ -310,7 +316,10 @@ export class App {
     }
 
     private async getQuestionById (id: QuestionId): Promise<Question> {
-        const questions = this.questionsStorage.get<Question[]>('questions', []);
+        const questions = this.questionsStorage.get<Question[]>(
+            'questions',
+            []
+        );
         let question: Question = questions.find((item) => item.id === id);
 
         if (question) {
@@ -398,7 +407,10 @@ export class App {
     }
 
     private updateDataBase (): void {
-        const questions = this.questionsStorage.get<Question[]>('questions', []);
+        const questions = this.questionsStorage.get<Question[]>(
+            'questions',
+            []
+        );
         const newQuestions = questions.map((question: Question) => {
             const user = new User(question.author.name, question.author.nick);
 

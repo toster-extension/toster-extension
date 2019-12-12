@@ -5,7 +5,7 @@
   "name": "__MSG_extension_name__",
   "short_name": "__MSG_extension_shortname__",
   "description": "__MSG_extension_description__",
-  "version": "1.18.29",
+  "version": "2.0.0",
   "icons": {
     "16": "images/toster_logo_16.png",
     "24": "images/toster_logo_24.png",
@@ -15,6 +15,7 @@
   },
 
   "permissions": [
+    "https://qna.habr.com/*",
     "https://toster.ru/*",
     "tabs",
     "contextMenus",
@@ -27,7 +28,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://toster.ru/*"],
+      "matches": ["https://qna.habr.com/*", "https://toster.ru/*"],
       "run_at": "document_end",
       "css": ["css/toster.css"],
       "js": ["toster.js"]
@@ -40,7 +41,7 @@
     "options.html"
   ],
   "externally_connectable": {
-    "matches": ["*://*.toster.ru/*"]
+    "matches": ["*://*.qna.habr.com/*", "*://*.toster.ru/*"]
   },
   "options_ui": {
     "open_in_tab": true,

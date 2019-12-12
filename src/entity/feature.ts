@@ -96,9 +96,7 @@ export abstract class Feature {
 <div class="user-summary__desc" data-user-url="${author.tosterUserPageUrl}">
     ${
         showName
-            ? `<a class="user-summary__name" href="${
-                  author.tosterUserPageUrl
-              }">${author.name}</a>`
+            ? `<a class="user-summary__name" href="${author.tosterUserPageUrl}">${author.name}</a>`
             : ''
     }
     ${
@@ -167,7 +165,7 @@ export abstract class Feature {
                 const imageLink = document.createElement('a');
                 const imageImg = document.createElement('img');
                 imageLink.className = 'question__tags-image';
-                imageLink.href = `https://toster.ru/tag/${tag.slug}`;
+                imageLink.href = `https://qna.habr.com/tag/${tag.slug}`;
                 imageImg.className = 'tag__image tag__image_bg';
                 imageImg.src = tag.image;
 
@@ -178,7 +176,7 @@ export abstract class Feature {
             }
 
             li.className = 'tags-list__item';
-            tagLink.href = `https://toster.ru/tag/${tag.slug}`;
+            tagLink.href = `https://qna.habr.com/tag/${tag.slug}`;
             tagLink.innerText = tag.name;
 
             li.appendChild(tagLink);

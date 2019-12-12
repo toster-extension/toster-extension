@@ -25,7 +25,7 @@ export class AddSettingsLinkToMenu extends Feature {
 <li class="main-menu__item">
   <a class="main-menu__link open-options-tab">
     <svg class="icon_svg icon_menu_settings" viewBox="0 0 32 32">
-      <use xlink:href="https://toster.ru/images/sprite_0.1.svg#icon_menu_settings"></use>
+      <use xlink:href="https://qna.habr.com/images/sprite_0.1.svg#icon_menu_settings"></use>
     </svg>
     Toster Extension
   </a>
