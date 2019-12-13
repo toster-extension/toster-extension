@@ -37,6 +37,7 @@ export const defaultFeaturesCollection: FeaturesCollection = {
     hideRelatedIssuesBlock: false,
     hideMostInterestingBlock: false,
     hideRecomendationsBlock: false,
+    hideAdvertisingBlock: false,
     doublePagination: false,
     hideDecisionQuestions: false,
     useKeyboardSubmitForm: false,

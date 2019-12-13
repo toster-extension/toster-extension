@@ -119,7 +119,6 @@
         "named-imports-order": "case-insensitive"
       }
     ],
-    // Eslint rules
     "array-bracket-newline": ["error", "always"],
     "object-curly-newline": [
       "error",

@@ -6,6 +6,7 @@ import { User } from '@/entity/user';
 import { createElementFromHTML } from '@/libs/utils';
 import { Storage } from '@/libs/storage';
 import { QuestionId, StorageType, Tag } from '@/libs/types';
+import { TOSTER_URL } from '@/libs/constants';
 
 export abstract class Feature {
     protected storage = new Storage(StorageType.CONTENT);
@@ -165,7 +166,7 @@ export abstract class Feature {
                 const imageLink = document.createElement('a');
                 const imageImg = document.createElement('img');
                 imageLink.className = 'question__tags-image';
-                imageLink.href = `https://qna.habr.com/tag/${tag.slug}`;
+                imageLink.href = `${TOSTER_URL}/tag/${tag.slug}`;
                 imageImg.className = 'tag__image tag__image_bg';
                 imageImg.src = tag.image;
 
@@ -176,7 +177,7 @@ export abstract class Feature {
             }
 
             li.className = 'tags-list__item';
-            tagLink.href = `https://qna.habr.com/tag/${tag.slug}`;
+            tagLink.href = `${TOSTER_URL}/tag/${tag.slug}`;
             tagLink.innerText = tag.name;
 
             li.appendChild(tagLink);

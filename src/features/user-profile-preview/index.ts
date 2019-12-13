@@ -84,6 +84,9 @@ export class UserProfilePreview extends Feature {
             },
         });
 
-        this.setBodyAttribute(FeaturesAttribute.USER_PROFILE_PREVIEW, 'enabled');
+        this.setBodyAttribute(
+            FeaturesAttribute.USER_PROFILE_PREVIEW,
+            'enabled'
+        );
     }
 }

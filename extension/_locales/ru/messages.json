@@ -6,7 +6,7 @@
     "message": "Toster Extension"
   },
   "extension_description": {
-    "message": "Расширение браузера Toster Extension. Улучшает возможности сайта toster.ru"
+    "message": "Расширение браузера Toster Extension. Улучшает возможности сайта Хабр Q&A"
   },
   "flashMessagesOptionsChanged": {
     "message": "Настройки $name$ изменены. Чтобы изменения вступили в силу необходимо обновить страницу.",
@@ -18,7 +18,7 @@
     }
   },
   "notificationsUnreadTitle": {
-    "message": "Новые события на toster.ru"
+    "message": "Новые события на Хабр Q&A"
   },
   "notificationsUnreadMessage": {
     "message": "Непрочитанных уведомлений: $count$",
@@ -167,6 +167,9 @@
   "optionsHideRecomendationsBlock": {
     "message": "Скрыть блок \"Рекомендуем\""
   },
+  "optionsHideAdvertisingBlock": {
+    "message": "Скрыть рекламный блок из правой панели"
+  },
   "optionsHideTopPanel": {
     "message": "Скрыть верхнюю панель со ссылками"
   },
@@ -270,6 +273,6 @@
     "message": "Открыть настройки"
   },
   "optionsIconClickEventOpenToster": {
-    "message": "Открыть toster.ru"
+    "message": "Открыть Хабр Q&A"
   }
 }

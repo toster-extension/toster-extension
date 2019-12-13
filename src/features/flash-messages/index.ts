@@ -44,9 +44,7 @@ export class FlashMessages extends Feature {
                     break;
             }
             const html = `
-<div class="alert alert_sticky ${className}" data-flash-id="${message.id}">${
-                message.html
-            }</div>`;
+<div class="alert alert_sticky ${className}" data-flash-id="${message.id}">${message.html}</div>`;
 
             container.appendChild(createElementFromHTML(html));
 

@@ -23,6 +23,7 @@ import {
     UpdateIconParams,
 } from '@/libs/types';
 import {
+    TOSTER_DOMAIN,
     TOSTER_QUESTION_PATH,
     TOSTER_TRACKER_PATH,
     TOSTER_URL,
@@ -121,7 +122,7 @@ export class App {
     async notifyHandler (notifyId: NotificationsType) {
         switch (notifyId) {
             case NotificationsType.UNREAD_NOTIFICATIONS:
-                const tabs = await getAllTabs({ url: '*://*.qna.habr.com/*' });
+                const tabs = await getAllTabs({ url: `*://*.${TOSTER_DOMAIN}/*` });
                 const activeTab = get(
                     tabs.filter((tab) => tab.active),
                     null
@@ -169,7 +170,7 @@ export class App {
             if (newEventsList) {
                 const items = newEventsList.querySelectorAll('li');
                 let count = items.length;
-                const tabs = await getAllTabs({ url: '*://*.qna.habr.com/*' });
+                const tabs = await getAllTabs({ url: `*://*.${TOSTER_DOMAIN}/*` });
                 const activeTab = get(
                     tabs.filter((tab) => tab.active),
                     0
@@ -236,7 +237,7 @@ export class App {
     private async sendFlashMessagesToContentSctipt (
         flashMessages: FlashMessage[]
     ) {
-        const tabs = await getAllTabs({ url: '*://*.qna.habr.com/*' });
+        const tabs = await getAllTabs({ url: `*://*.${TOSTER_DOMAIN}/*` });
 
         if (tabs.length) {
             for (const tab of tabs) {

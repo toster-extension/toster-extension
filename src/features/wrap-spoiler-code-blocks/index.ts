@@ -43,9 +43,7 @@ export class WrapSpoilerCodeBlocks extends Feature {
                             const lastChild = <HTMLElement>(
                                 wrappedBlock.lastChild
                             );
-                            lastChild.innerHTML = `<pre>${
-                                block.outerHTML
-                            }</pre>`;
+                            lastChild.innerHTML = `<pre>${block.outerHTML}</pre>`;
 
                             block.parentElement.parentElement.replaceChild(
                                 wrappedBlock,
