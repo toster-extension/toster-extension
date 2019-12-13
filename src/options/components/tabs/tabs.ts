@@ -2,8 +2,8 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import Tab from './tab';
 
 export interface Options {
-    useUrlFragment: boolean
-    defaultTabHash: string
+    useUrlFragment: boolean;
+    defaultTabHash: string;
 }
 
 @Component

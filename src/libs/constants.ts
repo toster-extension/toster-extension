@@ -21,8 +21,10 @@ function browserName () {
 const isChrome = browserName() === 'Chrome';
 const isOpera = browserName() === 'Opera';
 
-export const HABR_URL = 'https://habr.com';
-export const TOSTER_URL = 'https://qna.habr.com';
+export const HABR_DOMAIN = 'habr.com';
+export const TOSTER_DOMAIN = `qna.${HABR_DOMAIN}`;
+export const HABR_URL = `https://${HABR_DOMAIN}`;
+export const TOSTER_URL = `https://${TOSTER_DOMAIN}`;
 export const TOSTER_FEED_PATH = '/my/feed';
 export const TOSTER_TRACKER_PATH = '/my/tracker';
 export const TOSTER_QUESTION_PATH = '/q';

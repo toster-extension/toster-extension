@@ -3,7 +3,7 @@ import { Question } from '@/entity/question';
 import { FeaturesCollection } from '@/features';
 
 interface Branding<BrandT> {
-    _type?: BrandT
+    _type?: BrandT;
 }
 type Brand<T, BrandT> = T & Branding<BrandT>;
 
@@ -23,8 +23,8 @@ export enum NotificationsType {
 }
 
 export interface MessageData {
-    type: MessageType
-    data?: Data
+    type: MessageType;
+    data?: Data;
 }
 
 export enum MessageType {
@@ -40,27 +40,27 @@ export enum MessageType {
 }
 
 export interface Data {
-    user?: User
-    questions?: Question[]
-    questionId?: QuestionId
-    questionsIds?: QuestionId[]
-    features?: FeaturesCollection
-    notifications?: NotificationsData
-    flashMessages?: FlashMessage[]
+    user?: User;
+    questions?: Question[];
+    questionId?: QuestionId;
+    questionsIds?: QuestionId[];
+    features?: FeaturesCollection;
+    notifications?: NotificationsData;
+    flashMessages?: FlashMessage[];
 }
 
 export type QuestionId = Brand<string, Question>;
 
 export interface NotificationsData {
-    html: string
-    count: number
+    html: string;
+    count: number;
 }
 
 export interface FlashMessage {
-    id: number
-    html: string
-    type: FlashMessageType
-    handler?: FlashMessageHandler
+    id: number;
+    html: string;
+    type: FlashMessageType;
+    handler?: FlashMessageHandler;
 }
 
 export enum FlashMessageType {
@@ -71,8 +71,8 @@ export enum FlashMessageType {
 }
 
 export interface FlashMessageHandler {
-    type: FlashMessageHandlerType
-    event: string
+    type: FlashMessageHandlerType;
+    event: string;
 }
 
 export enum FlashMessageHandlerType {
@@ -83,19 +83,19 @@ export enum FlashMessageHandlerType {
 }
 
 export interface UpdateIconParams {
-    count?: number
-    loading?: true
+    count?: number;
+    loading?: true;
 }
 
 export interface Tag {
-    id?: TagId
-    name: string
-    slug: string
-    image: string
+    id?: TagId;
+    name: string;
+    slug: string;
+    image: string;
 }
 
 export type TagId = Brand<number, Tag>;
 
 export interface BlackListAuthor {
-    name: string
+    name: string;
 }

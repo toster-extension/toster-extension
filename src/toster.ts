@@ -91,26 +91,24 @@ class Toster {
 
         if (questionsList) {
             return Array.from(questionsList)
-                .map(
-                    (question: HTMLElement): string => {
-                        const a = question.querySelector(
-                            'a.question__title-link.question__title_thin'
-                        );
+                .map((question: HTMLElement): string => {
+                    const a = question.querySelector(
+                        'a.question__title-link.question__title_thin'
+                    );
 
-                        if (a) {
-                            const id = a
-                                .getAttribute('href')
-                                .split('/')
-                                .pop();
+                    if (a) {
+                        const id = a
+                            .getAttribute('href')
+                            .split('/')
+                            .pop();
 
-                            question.setAttribute('data-question-id', id);
+                        question.setAttribute('data-question-id', id);
 
-                            return id;
-                        }
-
-                        return '';
+                        return id;
                     }
-                )
+
+                    return '';
+                })
                 .filter(Boolean);
         }
 

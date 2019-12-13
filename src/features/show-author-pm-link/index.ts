@@ -36,9 +36,7 @@ export class ShowAuthorPMLink extends Feature {
                     const title = browser.i18n.getMessage('pmLinkTitle');
                     const text = browser.i18n.getMessage('pmLinkText');
                     const link = createElementFromHTML(
-                        `<a href="${
-                            user.habrPMUrl
-                        }" class="habr-pm-link" target="_blank" title="${title}">${text}</a>`
+                        `<a href="${user.habrPMUrl}" class="habr-pm-link" target="_blank" title="${title}">${text}</a>`
                     );
 
                     this.injectCSSToPage(css);

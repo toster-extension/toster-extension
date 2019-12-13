@@ -10,12 +10,12 @@ export const browserActionOnClickHandler = () => {
     const config = storage.getAll<FeaturesCollection>();
 
     switch (config.iconClickEvent) {
+        case IconClickEvents.OPEN_TOSTER:
+            browser.tabs.create({ url: TOSTER_URL });
+            break;
         case IconClickEvents.OPEN_SETTINGS:
         default:
             browser.runtime.openOptionsPage();
-            break;
-        case IconClickEvents.OPEN_TOSTER:
-            browser.tabs.create({ url: TOSTER_URL });
             break;
     }
 };

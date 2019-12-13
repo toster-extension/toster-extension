@@ -3,7 +3,7 @@ import { browser } from 'webextension-polyfill-ts';
 interface ModifiedRuntime {
     getPackageDirectoryEntry?: (
         callback: (dir: DirectoryEntry) => void
-    ) => Promise<DirectoryEntry>
+    ) => Promise<DirectoryEntry>;
 }
 
 const filesInDirectory = (dir: DirectoryEntry) =>

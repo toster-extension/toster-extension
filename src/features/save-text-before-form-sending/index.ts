@@ -30,7 +30,10 @@ export class SaveTextBeforeFormSending extends Feature {
                         this.removeFormFromStorage()
                     );
 
-                    document.addEventListener('input', this.saveFormToStorage());
+                    document.addEventListener(
+                        'input',
+                        this.saveFormToStorage()
+                    );
 
                     this.setBodyAttribute(
                         FeaturesAttribute.SAVE_TEXT_BEFORE_FORM_SENDING,

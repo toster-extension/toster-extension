@@ -8,7 +8,7 @@ import { Feature } from '@/entity/feature';
 export class HideTopPanel extends Feature {
     async execute (): Promise<void> {
         const panel = document.querySelector<HTMLDivElement>(
-            '.tmservices-panel[role="tm_panel"]'
+            '#TMpanel[role="TMpanel"]'
         );
 
         this.eventBus.on(

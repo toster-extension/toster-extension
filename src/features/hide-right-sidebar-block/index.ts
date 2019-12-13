@@ -27,6 +27,10 @@ export class HideRightSidebarBlock extends Feature {
                         this.hideRecomendationsBlock(sidebar);
                     }
 
+                    if (this.features.hideAdvertisingBlock) {
+                        this.hideAdvertisingBlock(sidebar);
+                    }
+
                     const bodyDataset = document.body.dataset;
 
                     if (
@@ -104,5 +108,27 @@ export class HideRightSidebarBlock extends Feature {
                 'enabled'
             );
         }
+    }
+
+    private hideAdvertisingBlock (sidebar: HTMLDivElement) {
+        const banner = sidebar.querySelector('[data-dfp-banner]');
+
+        if (!banner) {
+            return;
+        }
+
+        const link = sidebar.querySelector('a.dfp_label');
+
+        if (!link) {
+            return;
+        }
+
+        sidebar.removeChild(banner);
+        sidebar.removeChild(link);
+
+        this.setBodyAttribute(
+            FeaturesAttribute.HIDE_ADVERTISING_BLOCK,
+            'enabled'
+        );
     }
 }

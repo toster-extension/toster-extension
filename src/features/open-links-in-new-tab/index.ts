@@ -3,12 +3,13 @@ import {
     FeaturesAttribute,
     FeaturesCollection,
 } from '@/features/types';
+import { TOSTER_DOMAIN } from '@/libs/constants';
 import { Feature } from '@/entity/feature';
 
 export class OpenLinksInNewTab extends Feature {
     async execute (): Promise<void> {
         const links = document.querySelectorAll(
-            '.page__body a[href^="http"]:not([href*="qna.habr.com"])'
+            `.page__body a[href^="http"]:not([href*="${TOSTER_DOMAIN}"])`
         );
 
         this.eventBus.on(

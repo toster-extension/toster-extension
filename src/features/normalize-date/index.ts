@@ -21,7 +21,9 @@ export class NormalizeDate extends Feature {
                                 .replace(/^([^\d]+)/i, '')
                                 .replace(/,/g, '')
                                 .trim();
-                            const yearFromDateString = dateString.match(/\d{4}/);
+                            const yearFromDateString = dateString.match(
+                                /\d{4}/
+                            );
 
                             if (
                                 String(yearFromDateString) ===
