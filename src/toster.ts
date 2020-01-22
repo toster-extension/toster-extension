@@ -208,10 +208,12 @@ class Toster {
             })
         );
 
-        browser.runtime.sendMessage(<MessageData>{
-            type: MessageType.GET_QUESTIONS,
-            data: { questionsIds: this.questionsIds },
-        });
+        if (this.questionsIds.length) {
+            browser.runtime.sendMessage(<MessageData>{
+                type: MessageType.GET_QUESTIONS,
+                data: { questionsIds: this.questionsIds },
+            });
+        }
 
         if (this.top24QuestionsIds.length) {
             browser.runtime.sendMessage(<MessageData>{
