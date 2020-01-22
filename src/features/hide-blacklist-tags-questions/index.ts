@@ -10,7 +10,7 @@ export class HideBlacklistTagsQuestions extends Feature {
                 if (
                     this.features &&
                     this.features.useTagsBlackList &&
-                    this.questionsList.length
+                    questions.length
                 ) {
                     this.hideQuestions(questions);
                 }
@@ -23,7 +23,7 @@ export class HideBlacklistTagsQuestions extends Feature {
                 if (
                     this.features &&
                     this.features.useTagsBlackList &&
-                    this.questionsList.length
+                    questions.length
                 ) {
                     this.hideQuestions(questions);
                 }
