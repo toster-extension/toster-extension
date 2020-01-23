@@ -119,7 +119,7 @@ export abstract class Feature {
         );
     }
 
-    protected removeQuestionFromListById (id: QuestionId): void {
+    protected removeQuestionById (id: QuestionId): void {
         const element = document.querySelector(`[data-question-id="${id}"]`);
         if (element) {
             element.parentElement.removeChild(element);

@@ -8,8 +8,7 @@ export class BaseEntity {
             .map(([key, descriptor]) => {
                 if (descriptor && key[0] !== '_') {
                     try {
-                        const val = (this as any)[key];
-                        jsonObj[key] = val;
+                        jsonObj[key] = this[key];
                     } catch (error) {
                         console.error(`Error calling getter ${key}`, error);
                     }

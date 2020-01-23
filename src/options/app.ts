@@ -143,7 +143,7 @@ export default class OptionsApp extends Vue {
         ];
     }
 
-    get tabs (): Dictionary<string> {
+    get tabs (): Record<string, string> {
         const tabsNames = [
             'tabQuestionPage',
             'tabQuestionsList',
@@ -156,11 +156,11 @@ export default class OptionsApp extends Vue {
             'tabOthers',
         ];
 
-        return tabsNames.reduce<Dictionary<string>>((names, name) => {
+        return tabsNames.reduce<Record<string, string>>((names, name) => {
             names[name] = this.$i18n(name);
 
             return names;
-        },                                          {});
+        },                                              {});
     }
 
     get eventClickOptions (): ListItem[] {

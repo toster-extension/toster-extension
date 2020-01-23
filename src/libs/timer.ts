@@ -3,7 +3,7 @@ import { browser } from 'webextension-polyfill-ts';
 export class Timer {
     private intervalMs: number = 10000;
 
-    constructor (public name: string, seconds: number) {
+    constructor (private name: string, seconds: number) {
         this.setInterval(seconds);
     }
 

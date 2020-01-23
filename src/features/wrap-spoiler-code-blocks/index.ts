@@ -1,3 +1,4 @@
+import template from 'lodash/template';
 import { browser } from 'webextension-polyfill-ts';
 import {
     EventType,
@@ -6,6 +7,7 @@ import {
 } from '@/features/types';
 import { Feature } from '@/entity/feature';
 import { createElementFromHTML } from '@/libs/utils';
+import spoilerHtml from './spoiler.html';
 
 export class WrapSpoilerCodeBlocks extends Feature {
     async execute (): Promise<void> {
@@ -23,10 +25,9 @@ export class WrapSpoilerCodeBlocks extends Feature {
                     const spoilerText = browser.i18n.getMessage(
                         'codeSpoilerText'
                     );
-                    const spoiler = createElementFromHTML(
-                        // tslint:disable-next-line
-                        `<div class="spoiler"><b class="spoiler_title">${spoilerText}</b><div class="spoiler_text"></div></div>`
-                    );
+                    const compiled = template(spoilerHtml);
+                    const html = compiled({spoilerText});
+                    const spoiler = createElementFromHTML(html);
 
                     Array.from(codeBlocks)
                         .filter(
