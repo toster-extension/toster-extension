@@ -274,5 +274,8 @@
   },
   "optionsIconClickEventOpenToster": {
     "message": "Открыть Хабр Q&A"
+  },
+  "optionsScrollToTop": {
+    "message": "Отображать кнопку прокрутки страницы вверх"
   }
 }

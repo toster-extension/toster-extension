@@ -148,6 +148,11 @@
   },
   "linterOptions": {
     "typeCheck": true,
-    "exclude": ["extension/**/*", "{src,assets}/**/*.json", "**/*.{scss,css}"]
+    "exclude": [
+      "extension/**/*",
+      "{src,assets}/**/*.json",
+      "**/*.{scss,css}",
+      "**/*.html"
+    ]
   }
 }

@@ -1,0 +1,36 @@
+body[data-feature-scrolltotop="enabled"] {
+  .layout__elevator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 60px;
+    height: 100%;
+    color: #d5dddf;
+    text-align: center;
+
+    &.hidden {
+      display: none;
+    }
+
+    .icon-svg {
+      display: inline-block;
+      background-color: transparent;
+      color: inherit;
+      vertical-align: middle;
+      fill: currentColor;
+      stroke: currentColor;
+      stroke-width: 0;
+      pointer-events: none;
+      position: relative;
+
+      &.icon-svg_scroll-up {
+        position: relative;
+        top: 95%;
+        margin-top: -15px;
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+}

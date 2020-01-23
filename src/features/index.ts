@@ -28,6 +28,7 @@ export * from './normalize-date';
 export * from './add-settings-link-to-menu';
 export * from './hide-top-panel';
 export * from './expand-to-full-width';
+export * from './scroll-to-top';
 export * from './types';
 
 export const defaultFeaturesCollection: FeaturesCollection = {
@@ -76,4 +77,5 @@ export const defaultFeaturesCollection: FeaturesCollection = {
     addSettingsLinkToMenu: false,
     hideTopPanel: false,
     expandToFullWidth: false,
+    scrollToTop: false,
 };

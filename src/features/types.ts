@@ -46,6 +46,7 @@ export interface FeaturesCollection {
     addSettingsLinkToMenu?: boolean;
     hideTopPanel?: boolean;
     expandToFullWidth?: boolean;
+    scrollToTop?: boolean;
 }
 
 export enum FeaturesAttribute {
@@ -84,6 +85,7 @@ export enum FeaturesAttribute {
     ADD_SETTINGS_LINK_TO_MENU = 'ADD_SETTINGS_LINK_TO_MENU',
     HIDE_TOP_PANEL = 'HIDE_TOP_PANEL',
     EXPAND_TO_FULL_WIDTH = 'EXPAND_TO_FULL_WIDTH',
+    SCROLL_TO_TOP = 'SCROLL_TO_TOP',
 }
 
 export enum EventType {
