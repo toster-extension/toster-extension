@@ -139,6 +139,7 @@ export default class OptionsApp extends Vue {
             'normalizeDate',
             'addSettingsLinkToMenu',
             'expandToFullWidth',
+            'scrollToTop',
         ];
     }
 

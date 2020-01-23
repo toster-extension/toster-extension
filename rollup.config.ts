@@ -7,10 +7,14 @@ import commonjs from 'rollup-plugin-commonjs';
 import vue from 'rollup-plugin-vue';
 import scss from 'rollup-plugin-scss';
 import svg from 'rollup-plugin-svg';
+import html from 'rollup-plugin-html';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
 const plugins = [
+    html({
+        include: '**/*.html',
+    }),
     typescript(),
     json({
         preferConst: true,

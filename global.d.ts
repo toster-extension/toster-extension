@@ -18,4 +18,9 @@ declare module '*.svg' {
     export default content;
 }
 
+declare module '*.html' {
+    const content: string;
+    export default content;
+}
+
 type Dictionary<T = any> = { [index: string]: T };
