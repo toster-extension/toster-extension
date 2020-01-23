@@ -1,7 +1,9 @@
+import template from 'lodash/template';
 import { EventType, FeaturesAttribute } from '@/features/types';
 import { Feature } from '@/entity/feature';
 import { FlashMessage, FlashMessageType } from '@/libs/types';
 import { createElementFromHTML } from '@/libs/utils';
+import messageHtml from './message.html';
 
 export class FlashMessages extends Feature {
     async execute (): Promise<void> {
@@ -28,6 +30,7 @@ export class FlashMessages extends Feature {
             }
 
             let className = '';
+
             switch (message.type) {
                 case FlashMessageType.INFO:
                 default:
@@ -43,9 +46,13 @@ export class FlashMessages extends Feature {
                     className = 'alert_success';
                     break;
             }
-            const html = `
-<div class="alert alert_sticky ${className}" data-flash-id="${message.id}">${message.html}</div>`;
 
+            const compiled = template(messageHtml);
+            const html = compiled({
+                className,
+                messageId: message.id,
+                messageHtml: message.html,
+            });
             container.appendChild(createElementFromHTML(html));
 
             if (message.handler) {

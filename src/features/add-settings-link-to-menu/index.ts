@@ -1,3 +1,4 @@
+import template from 'lodash/template';
 import { browser } from 'webextension-polyfill-ts';
 import {
     EventType,
@@ -9,6 +10,7 @@ import { createElementFromHTML } from '@/libs/utils';
 import { MessageData, MessageType } from '@/libs/types';
 import { TOSTER_URL } from '@/libs/constants';
 import css from './style.scss';
+import menuItemHtml from './menu-item.html';
 
 export class AddSettingsLinkToMenu extends Feature {
     async execute (): Promise<void> {
@@ -22,15 +24,9 @@ export class AddSettingsLinkToMenu extends Feature {
                 this.features = features;
 
                 if (this.features.addSettingsLinkToMenu && mainMenu) {
-                    const menuItem = createElementFromHTML(`
-<li class="main-menu__item">
-  <a class="main-menu__link open-options-tab">
-    <svg class="icon_svg icon_menu_settings" viewBox="0 0 32 32">
-      <use xlink:href="${TOSTER_URL}/images/sprite_0.1.svg#icon_menu_settings"></use>
-    </svg>
-    Toster Extension
-  </a>
-</li>`);
+                    const compiled = template(menuItemHtml);
+                    const html = compiled({TOSTER_URL});
+                    const menuItem = createElementFromHTML(html);
                     menuItem.querySelector('a').addEventListener('click', (e) => {
                         e.preventDefault();
                         browser.runtime.sendMessage(<MessageData>{

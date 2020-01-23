@@ -1,3 +1,4 @@
+import template from 'lodash/template';
 import { browser } from 'webextension-polyfill-ts';
 import {
     EventType,
@@ -8,6 +9,7 @@ import { Feature } from '@/entity/feature';
 import { User } from '@/entity/user';
 import { createElementFromHTML } from '@/libs/utils';
 import css from './style.scss';
+import linkHtml from './link.html';
 
 export class ShowAuthorPMLink extends Feature {
     async execute (): Promise<void> {
@@ -35,9 +37,13 @@ export class ShowAuthorPMLink extends Feature {
                     const user = new User(name, nick);
                     const title = browser.i18n.getMessage('pmLinkTitle');
                     const text = browser.i18n.getMessage('pmLinkText');
-                    const link = createElementFromHTML(
-                        `<a href="${user.habrPMUrl}" class="habr-pm-link" target="_blank" title="${title}">${text}</a>`
-                    );
+                    const compiled = template(linkHtml);
+                    const html = compiled({
+                        url: user.habrPMUrl,
+                        title,
+                        text,
+                    });
+                    const link = createElementFromHTML(html);
 
                     this.injectCSSToPage(css);
 

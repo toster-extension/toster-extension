@@ -37,7 +37,7 @@ export class HideBlacklistTagsQuestions extends Feature {
         );
 
         filtered.forEach((question: Question) => {
-            this.removeQuestionFromListById(question.id);
+            this.removeQuestionById(question.id);
         });
 
         this.setBodyAttribute(FeaturesAttribute.USE_TAGS_BLACKLIST, 'enabled');
