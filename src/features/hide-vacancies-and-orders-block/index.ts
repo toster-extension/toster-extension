@@ -16,19 +16,18 @@ export class HideVacanciesAndOrdersBlock extends Feature {
             (features: FeaturesCollection) => {
                 this.features = features;
 
-                if (
-                    this.features.hideVacanciesAndOrdersBlock &&
-                    vacanciesAndOrdersBlock
-                ) {
-                    vacanciesAndOrdersBlock.parentElement.removeChild(
-                        vacanciesAndOrdersBlock
-                    );
-
-                    this.setBodyAttribute(
-                        FeaturesAttribute.HIDE_VACANCIES_AND_ORDERS_BLOCK,
-                        'enabled'
-                    );
+                if (!this.features.hideVacanciesAndOrdersBlock || !vacanciesAndOrdersBlock) {
+                    return;
                 }
+
+                vacanciesAndOrdersBlock.parentElement.removeChild(
+                    vacanciesAndOrdersBlock
+                );
+
+                this.setBodyAttribute(
+                    FeaturesAttribute.HIDE_VACANCIES_AND_ORDERS_BLOCK,
+                    'enabled'
+                );
             }
         );
     }

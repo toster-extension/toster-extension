@@ -8,12 +8,14 @@ export class HideBlacklistTagsQuestions extends Feature {
             EventType.QUESTIONS_UPDATE,
             (questions: Question[]) => {
                 if (
-                    this.features &&
-                    this.features.useTagsBlackList &&
-                    questions.length
+                    !this.features ||
+                    !this.features.useTagsBlackList ||
+                    !questions.length
                 ) {
-                    this.hideQuestions(questions);
+                    return;
                 }
+
+                this.hideQuestions(questions);
             }
         );
 
@@ -21,12 +23,14 @@ export class HideBlacklistTagsQuestions extends Feature {
             EventType.TOP24_QUESTIONS_UPDATE,
             (questions: Question[]) => {
                 if (
-                    this.features &&
-                    this.features.useTagsBlackList &&
-                    questions.length
+                    !this.features ||
+                    !this.features.useTagsBlackList ||
+                    !questions.length
                 ) {
-                    this.hideQuestions(questions);
+                    return;
                 }
+
+                this.hideQuestions(questions);
             }
         );
     }

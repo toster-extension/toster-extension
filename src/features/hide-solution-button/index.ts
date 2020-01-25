@@ -18,22 +18,24 @@ export class HideSolutionButton extends Feature {
                 );
                 /* jscpd:ignore-end */
 
-                if (this.features.hideSolutionButton && buttonsGroup) {
-                    buttonsGroup.forEach((group: HTMLElement) => {
-                        const button: HTMLButtonElement = group.querySelector(
-                            'span.btn_solution'
-                        );
-
-                        if (button) {
-                            group.removeChild(button);
-                        }
-                    });
-
-                    this.setBodyAttribute(
-                        FeaturesAttribute.HIDE_SOLUTION_BUTTON,
-                        'enabled'
-                    );
+                if (!this.features.hideSolutionButton || !buttonsGroup) {
+                    return;
                 }
+
+                buttonsGroup.forEach((group: HTMLElement) => {
+                    const button: HTMLButtonElement = group.querySelector(
+                        'span.btn_solution'
+                    );
+
+                    if (button) {
+                        group.removeChild(button);
+                    }
+                });
+
+                this.setBodyAttribute(
+                    FeaturesAttribute.HIDE_SOLUTION_BUTTON,
+                    'enabled'
+                );
             }
         );
     }

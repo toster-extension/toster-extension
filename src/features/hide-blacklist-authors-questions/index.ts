@@ -14,18 +14,22 @@ export class HideBlacklistAuthorsQuestions extends Feature {
         this.eventBus.on(
             EventType.QUESTIONS_UPDATE,
             (questions: Question[]) => {
-                if (this.features && this.features.useAuthorsBlackList) {
-                    this.hideQuestions(questions);
+                if (!this.features || !this.features.useAuthorsBlackList) {
+                    return;
                 }
+
+                this.hideQuestions(questions);
             }
         );
 
         this.eventBus.on(
             EventType.TOP24_QUESTIONS_UPDATE,
             (questions: Question[]) => {
-                if (this.features && this.features.useAuthorsBlackList) {
-                    this.hideQuestions(questions);
+                if (!this.features || !this.features.useAuthorsBlackList) {
+                    return;
                 }
+
+                this.hideQuestions(questions);
             }
         );
 
@@ -35,20 +39,22 @@ export class HideBlacklistAuthorsQuestions extends Feature {
                 this.features = features;
 
                 if (
-                    this.onQuestionPage &&
-                    this.features.useAuthorsBlackList &&
-                    this.features.useAuthorsBlackListForAnswersAndComments
+                    !this.onQuestionPage ||
+                    !this.features.useAuthorsBlackList ||
+                    !this.features.useAuthorsBlackListForAnswersAndComments
                 ) {
-                    this.hideAnswers();
-                    this.hideComments();
+                    return;
+                }
 
-                    this.setBodyAttribute(
+                this.hideAnswers();
+                this.hideComments();
+
+                this.setBodyAttribute(
                         FeaturesAttribute.USE_AUTHORS_BLACKLIST,
                         'enabled'
                     );
 
-                    this.injectCSSToPage(css);
-                }
+                this.injectCSSToPage(css);
             }
         );
     }

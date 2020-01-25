@@ -10,14 +10,16 @@ export class ShowTagsInQuestionsList extends Feature {
             EventType.QUESTIONS_UPDATE,
             (questions: Question[]) => {
                 if (
-                    this.features &&
-                    this.features.showTagsInQuestionsList &&
-                    !this.onQuestionPage &&
-                    this.questionsList.length
+                    !this.features ||
+                    !this.features.showTagsInQuestionsList ||
+                    this.onQuestionPage ||
+                    !this.questionsList.length
                 ) {
-                    this.injectCSSToPage(css);
-                    this.showTags(questions);
+                    return;
                 }
+
+                this.injectCSSToPage(css);
+                this.showTags(questions);
             }
         );
     }
@@ -35,17 +37,19 @@ export class ShowTagsInQuestionsList extends Feature {
 
             const question = questions.find((item) => item.id === id);
 
-            if (question) {
-                const tagsDOMElement = this.makeTags(
-                    question.tags,
-                    this.features.showTagsImagesInQuestionsList
-                );
-                const tagList = element.querySelector(
-                    '.tags-list.tags-list_short'
-                );
-
-                tagList.parentElement.replaceChild(tagsDOMElement, tagList);
+            if (!question) {
+                return;
             }
+
+            const tagsDOMElement = this.makeTags(
+                question.tags,
+                this.features.showTagsImagesInQuestionsList
+            );
+            const tagList = element.querySelector(
+                '.tags-list.tags-list_short'
+            );
+
+            tagList.parentElement.replaceChild(tagsDOMElement, tagList);
         });
 
         if (this.features.showTagsImagesInQuestionsList) {

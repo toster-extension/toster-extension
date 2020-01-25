@@ -9,9 +9,7 @@ export class BaseEntity {
                 if (descriptor && key[0] !== '_') {
                     try {
                         jsonObj[key] = this[key];
-                    } catch (error) {
-                        console.error(`Error calling getter ${key}`, error);
-                    }
+                    } catch {} // tslint:disable-line
                 }
             });
 

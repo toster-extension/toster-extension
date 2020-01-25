@@ -18,30 +18,34 @@ export class HideRightSidebarBlock extends Feature {
             (features: FeaturesCollection) => {
                 this.features = features;
 
-                if (sidebar) {
-                    if (this.features.hideMostInterestingBlock) {
-                        this.hideMostInterestingBlock(sidebar);
-                    }
-
-                    if (this.features.hideRecomendationsBlock) {
-                        this.hideRecomendationsBlock(sidebar);
-                    }
-
-                    if (this.features.hideAdvertisingBlock) {
-                        this.hideAdvertisingBlock(sidebar);
-                    }
-
-                    const bodyDataset = document.body.dataset;
-
-                    if (
-                        bodyDataset.featureHiderecomendationsblock ===
-                            'enabled' &&
-                        bodyDataset.featureHidemostinterestingblock ===
-                            'enabled'
-                    ) {
-                        this.injectCSSToPage(css);
-                    }
+                if (!sidebar) {
+                    return;
                 }
+
+                if (this.features.hideMostInterestingBlock) {
+                    this.hideMostInterestingBlock(sidebar);
+                }
+
+                if (this.features.hideRecomendationsBlock) {
+                    this.hideRecomendationsBlock(sidebar);
+                }
+
+                if (this.features.hideAdvertisingBlock) {
+                    this.hideAdvertisingBlock(sidebar);
+                }
+
+                const bodyDataset = document.body.dataset;
+
+                if (
+                    bodyDataset.featureHiderecomendationsblock !==
+                        'enabled' ||
+                    bodyDataset.featureHidemostinterestingblock !==
+                        'enabled'
+                ) {
+                    return;
+                }
+
+                this.injectCSSToPage(css);
             }
         );
     }

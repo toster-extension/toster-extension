@@ -17,16 +17,18 @@ export class OpenLinksInNewTab extends Feature {
             (features: FeaturesCollection) => {
                 this.features = features;
 
-                if (this.features.openLinksInNewTab && this.onQuestionPage) {
-                    links.forEach((link: HTMLAnchorElement) => {
-                        link.setAttribute('target', '_blank');
-                    });
-
-                    this.setBodyAttribute(
-                        FeaturesAttribute.OPEN_LINKS_IN_NEW_TAB,
-                        'enabled'
-                    );
+                if (!this.features.openLinksInNewTab || !this.onQuestionPage) {
+                    return;
                 }
+
+                links.forEach((link: HTMLAnchorElement) => {
+                    link.setAttribute('target', '_blank');
+                });
+
+                this.setBodyAttribute(
+                    FeaturesAttribute.OPEN_LINKS_IN_NEW_TAB,
+                    'enabled'
+                );
             }
         );
     }

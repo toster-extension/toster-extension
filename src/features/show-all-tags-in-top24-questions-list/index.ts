@@ -10,13 +10,15 @@ export class ShowTagsInTop24QuestionsList extends Feature {
             EventType.TOP24_QUESTIONS_UPDATE,
             (questions: Question[]) => {
                 if (
-                    this.features &&
-                    this.features.showTagsInTop24QuestionsList &&
-                    this.top24QuestionsList.length
+                    !this.features ||
+                    !this.features.showTagsInTop24QuestionsList ||
+                    !this.top24QuestionsList.length
                 ) {
-                    this.injectCSSToPage(css);
-                    this.showTags(questions);
+                    return;
                 }
+
+                this.injectCSSToPage(css);
+                this.showTags(questions);
             }
         );
     }
@@ -26,16 +28,18 @@ export class ShowTagsInTop24QuestionsList extends Feature {
             const id = <QuestionId>element.getAttribute('data-question-id');
             const question = questions.find((item) => item.id === id);
 
-            if (question) {
-                const tagsDOMElement = this.makeTags(question.tags, false);
-
-                element.insertBefore(
-                    tagsDOMElement,
-                    element.querySelector(
-                        'a.question__title-link.question__title_thin'
-                    )
-                );
+            if (!question) {
+                return;
             }
+
+            const tagsDOMElement = this.makeTags(question.tags, false);
+
+            element.insertBefore(
+                tagsDOMElement,
+                element.querySelector(
+                    'a.question__title-link.question__title_thin'
+                )
+            );
         });
 
         this.setBodyAttribute(

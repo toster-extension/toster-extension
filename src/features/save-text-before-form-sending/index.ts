@@ -16,30 +16,32 @@ export class SaveTextBeforeFormSending extends Feature {
                 this.features = features;
 
                 if (
-                    this.features.saveTextBeforeFormSending &&
-                    this.onQuestionPage
+                    !this.features.saveTextBeforeFormSending ||
+                    !this.onQuestionPage
                 ) {
-                    this.questionId = document
-                        .querySelector('input[name="question_id"]')
-                        .getAttribute('value');
-
-                    this.restoreFormFromStorage();
-
-                    document.addEventListener(
-                        'submit',
-                        this.removeFormFromStorage()
-                    );
-
-                    document.addEventListener(
-                        'input',
-                        this.saveFormToStorage()
-                    );
-
-                    this.setBodyAttribute(
-                        FeaturesAttribute.SAVE_TEXT_BEFORE_FORM_SENDING,
-                        'enabled'
-                    );
+                    return;
                 }
+
+                this.questionId = document
+                    .querySelector('input[name="question_id"]')
+                    .getAttribute('value');
+
+                this.restoreFormFromStorage();
+
+                document.addEventListener(
+                    'submit',
+                    this.removeFormFromStorage()
+                );
+
+                document.addEventListener(
+                    'input',
+                    this.saveFormToStorage()
+                );
+
+                this.setBodyAttribute(
+                    FeaturesAttribute.SAVE_TEXT_BEFORE_FORM_SENDING,
+                    'enabled'
+                );
             }
         );
     }

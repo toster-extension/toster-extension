@@ -19,19 +19,21 @@ export class QuestionPreview extends Feature {
             (features: FeaturesCollection) => {
                 this.features = features;
 
-                if (this.features.questionPreview) {
-                    this.injectCSSToPage(theme);
-                    this.injectCSSToPage(css);
-
-                    if (this.features.replaceCodeInPreview) {
-                        this.setBodyAttribute(
-                            FeaturesAttribute.REPLACE_CODE_IN_PREVIEW,
-                            'enabled'
-                        );
-                    }
-
-                    this.setupPreview();
+                if (!this.features.questionPreview) {
+                    return;
                 }
+
+                this.injectCSSToPage(theme);
+                this.injectCSSToPage(css);
+
+                if (this.features.replaceCodeInPreview) {
+                    this.setBodyAttribute(
+                        FeaturesAttribute.REPLACE_CODE_IN_PREVIEW,
+                        'enabled'
+                    );
+                }
+
+                this.setupPreview();
             }
         );
     }

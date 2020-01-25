@@ -13,13 +13,15 @@ export class MonospaceFont extends Feature {
             (features: FeaturesCollection) => {
                 this.features = features;
 
-                if (this.features.monospaceFont) {
-                    this.injectCSSToPage(css);
-                    this.setBodyAttribute(
-                        FeaturesAttribute.MONOSPACE_FONT,
-                        'enabled'
-                    );
+                if (!this.features.monospaceFont) {
+                    return;
                 }
+
+                this.injectCSSToPage(css);
+                this.setBodyAttribute(
+                    FeaturesAttribute.MONOSPACE_FONT,
+                    'enabled'
+                );
             }
         );
     }

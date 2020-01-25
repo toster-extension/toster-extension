@@ -16,22 +16,24 @@ export class DoublePagination extends Feature {
                 this.features = features;
 
                 if (
-                    this.features.doublePagination &&
-                    paginationBlock &&
-                    paginationParent &&
-                    !this.onQuestionPage
+                    !this.features.doublePagination ||
+                    !paginationBlock ||
+                    !paginationParent ||
+                    this.onQuestionPage
                 ) {
-                    const clone = paginationBlock.cloneNode(true);
-                    paginationParent.insertBefore(
+                    return;
+                }
+
+                const clone = paginationBlock.cloneNode(true);
+                paginationParent.insertBefore(
                         clone,
                         paginationParent.firstChild
                     );
 
-                    this.setBodyAttribute(
-                        FeaturesAttribute.DOUBLE_PAGINATION,
-                        'enabled'
-                    );
-                }
+                this.setBodyAttribute(
+                    FeaturesAttribute.DOUBLE_PAGINATION,
+                    'enabled'
+                );
             }
         );
     }

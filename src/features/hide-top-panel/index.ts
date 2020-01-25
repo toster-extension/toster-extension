@@ -16,14 +16,16 @@ export class HideTopPanel extends Feature {
             (features: FeaturesCollection) => {
                 this.features = features;
 
-                if (this.features.hideTopPanel && panel) {
-                    panel.remove();
-
-                    this.setBodyAttribute(
-                        FeaturesAttribute.HIDE_TOP_PANEL,
-                        'enabled'
-                    );
+                if (!this.features.hideTopPanel || !panel) {
+                    return;
                 }
+
+                panel.remove();
+
+                this.setBodyAttribute(
+                    FeaturesAttribute.HIDE_TOP_PANEL,
+                    'enabled'
+                );
             }
         );
     }

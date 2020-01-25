@@ -16,11 +16,12 @@ export class ScrollToTop extends Feature {
             (features: FeaturesCollection) => {
                 this.features = features;
 
-                if (this.features.scrollToTop) {
-                    this.injectCSSToPage(css);
-
-                    this.setupButton();
+                if (!this.features.scrollToTop) {
+                    return;
                 }
+
+                this.injectCSSToPage(css);
+                this.setupButton();
             }
         );
     }

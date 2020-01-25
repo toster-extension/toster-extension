@@ -85,6 +85,7 @@ export default class OptionsApp extends Vue {
             'hideRelatedIssuesBlock',
             'hideSolutionButton',
             'swapAnswerAndSolutionButtons',
+            'hiddenQuestionStub',
         ];
     }
 

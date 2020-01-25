@@ -19,12 +19,13 @@ export class UserProfilePreview extends Feature {
             (features: FeaturesCollection) => {
                 this.features = features;
 
-                if (this.features.userProfilePreview) {
-                    this.injectCSSToPage(theme);
-                    this.injectCSSToPage(css);
-
-                    this.setupPreview();
+                if (!this.features.userProfilePreview) {
+                    return;
                 }
+
+                this.injectCSSToPage(theme);
+                this.injectCSSToPage(css);
+                this.setupPreview();
             }
         );
     }

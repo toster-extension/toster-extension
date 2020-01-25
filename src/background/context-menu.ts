@@ -1,4 +1,4 @@
-import { browser } from 'webextension-polyfill-ts';
+import { browser, Menus } from 'webextension-polyfill-ts';
 import { CHAT_URL, FEEDBACK_URL } from '@/libs/constants';
 
 const setUpContextMenus = () => {
@@ -24,7 +24,7 @@ const setUpContextMenus = () => {
     });
 };
 
-export const contextMenusOnClickHandler = (item) => {
+export const contextMenusOnClickHandler = (item: Menus.OnClickData) => {
     switch (item.menuItemId) {
         case 'feedback':
         default:

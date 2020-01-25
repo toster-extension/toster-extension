@@ -23,25 +23,27 @@ export class AddSettingsLinkToMenu extends Feature {
             (features: FeaturesCollection) => {
                 this.features = features;
 
-                if (this.features.addSettingsLinkToMenu && mainMenu) {
-                    const compiled = template(menuItemHtml);
-                    const html = compiled({TOSTER_URL});
-                    const menuItem = createElementFromHTML(html);
-                    menuItem.querySelector('a').addEventListener('click', (e) => {
+                if (!this.features.addSettingsLinkToMenu || !mainMenu) {
+                    return;
+                }
+
+                const compiled = template(menuItemHtml);
+                const html = compiled({TOSTER_URL});
+                const menuItem = createElementFromHTML(html);
+                menuItem.querySelector('a').addEventListener('click', (e) => {
                         e.preventDefault();
                         browser.runtime.sendMessage(<MessageData>{
                             type: MessageType.OPEN_OPTIONS_PAGE,
                         });
                     });
 
-                    mainMenu.appendChild(menuItem);
+                mainMenu.appendChild(menuItem);
 
-                    this.setBodyAttribute(
+                this.setBodyAttribute(
                         FeaturesAttribute.ADD_SETTINGS_LINK_TO_MENU,
                         'enabled'
                     );
-                    this.injectCSSToPage(css);
-                }
+                this.injectCSSToPage(css);
             }
         );
     }
