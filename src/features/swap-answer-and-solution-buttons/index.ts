@@ -19,27 +19,29 @@ export class SwapAnswerAndSolutionButtons extends Feature {
                 /* jscpd:ignore-end */
 
                 if (
-                    this.features.swapAnswerAndSolutionButtons &&
-                    buttonsGroup
+                    !this.features.swapAnswerAndSolutionButtons ||
+                    !buttonsGroup
                 ) {
-                    buttonsGroup.forEach((group: HTMLElement) => {
-                        const buttonSolution: HTMLButtonElement = group.querySelector(
-                            'span.btn_solution'
-                        );
-                        const buttonLike: HTMLButtonElement = group.querySelector(
-                            'a.btn_like'
-                        );
-
-                        if (buttonSolution && buttonLike) {
-                            group.insertBefore(buttonLike, buttonSolution);
-
-                            this.setBodyAttribute(
-                                FeaturesAttribute.SWAP_ANSWER_AND_SOLUTION_BUTTONS,
-                                'enabled'
-                            );
-                        }
-                    });
+                    return;
                 }
+
+                buttonsGroup.forEach((group: HTMLElement) => {
+                    const buttonSolution: HTMLButtonElement = group.querySelector(
+                        'span.btn_solution'
+                    );
+                    const buttonLike: HTMLButtonElement = group.querySelector(
+                        'a.btn_like'
+                    );
+
+                    if (buttonSolution && buttonLike) {
+                        group.insertBefore(buttonLike, buttonSolution);
+
+                        this.setBodyAttribute(
+                            FeaturesAttribute.SWAP_ANSWER_AND_SOLUTION_BUTTONS,
+                            'enabled'
+                        );
+                    }
+                });
             }
         );
     }

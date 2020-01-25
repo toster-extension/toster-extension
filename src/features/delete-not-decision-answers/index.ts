@@ -15,12 +15,11 @@ export class DeleteNotDecisionAnswers extends Feature {
             (features: FeaturesCollection) => {
                 this.features = features;
 
-                if (
-                    this.features.deleteNotDecisionAnswers &&
-                    this.onUserAnswersPage
-                ) {
-                    this.showButton();
+                if (!this.features.deleteNotDecisionAnswers || !this.onUserAnswersPage) {
+                    return;
                 }
+
+                this.showButton();
             }
         );
     }

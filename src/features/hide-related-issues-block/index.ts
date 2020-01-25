@@ -17,21 +17,23 @@ export class HideRelatedIssuesBlock extends Feature {
                 this.features = features;
 
                 if (
-                    this.features.hideRelatedIssuesBlock &&
-                    relatedIssuesBlock
+                    !this.features.hideRelatedIssuesBlock ||
+                    !relatedIssuesBlock
                 ) {
-                    relatedIssuesBlock.parentElement.removeChild(
-                        relatedIssuesBlock.previousElementSibling
-                    );
-                    relatedIssuesBlock.parentElement.removeChild(
-                        relatedIssuesBlock
-                    );
-
-                    this.setBodyAttribute(
-                        FeaturesAttribute.HIDE_RELATED_ISSUES_BLOCK,
-                        'enabled'
-                    );
+                    return;
                 }
+
+                relatedIssuesBlock.parentElement.removeChild(
+                    relatedIssuesBlock.previousElementSibling
+                );
+                relatedIssuesBlock.parentElement.removeChild(
+                    relatedIssuesBlock
+                );
+
+                this.setBodyAttribute(
+                    FeaturesAttribute.HIDE_RELATED_ISSUES_BLOCK,
+                    'enabled'
+                );
             }
         );
     }

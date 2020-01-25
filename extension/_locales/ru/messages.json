@@ -277,5 +277,20 @@
   },
   "optionsScrollToTop": {
     "message": "Отображать кнопку прокрутки страницы вверх"
+  },
+  "optionsHiddenQuestionStub": {
+    "message": "Отображать заглушку, если вопрос скрыт с помощью чёрного списка"
+  },
+  "hiddenQuestionStubHiddenByAuthorText": {
+    "message": "Вопрос скрыт, так как его автор $authorName$ находится в чёрном списке",
+    "placeholders": {
+      "authorName": {
+        "content": "$1",
+        "example": "Name @nickname"
+      }
+    }
+  },
+  "hiddenQuestionStubHiddenByTag": {
+    "message": "Вопрос скрыт, так как один или несколько тегов находятся в чёрном списке"
   }
 }

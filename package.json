@@ -22,7 +22,7 @@
     "watch:scss": "node-sass --watch src/css/ -o extension/css/",
     "watch": "run-s clean build:scss && cross-env NODE_ENV=development run-p watch:*",
     "docs:install": "gitbook install ./gitbook",
-    "docs:watch": "gitbook serve ./gitbook ./docs",
+    "docs:watch": "gitbook serve ./gitbook ./docs --open",
     "docs:build": "gitbook build ./gitbook ./docs",
     "lint": "tslint -c tslint.json -p tsconfig.json --force",
     "lint:fix": "yarn lint --fix",

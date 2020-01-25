@@ -21,43 +21,45 @@ export class ShowAuthorPMLink extends Feature {
                 this.features = features;
 
                 if (
-                    this.features.showAuthorPMLink &&
-                    this.onQuestionPage &&
-                    userBlock
+                    !this.features.showAuthorPMLink ||
+                    !this.onQuestionPage ||
+                    !userBlock
                 ) {
-                    const name = (userBlock.querySelector(
-                        '.user-summary__name'
-                    ) as HTMLDivElement).innerText.trim();
-                    const nick = (userBlock.querySelector(
-                        '.user-summary__nickname'
-                    ) as HTMLDivElement).innerText
-                        .trim()
-                        .replace(/\s+/g, '')
-                        .replace(/^@/, '');
-                    const user = new User(name, nick);
-                    const title = browser.i18n.getMessage('pmLinkTitle');
-                    const text = browser.i18n.getMessage('pmLinkText');
-                    const compiled = template(linkHtml);
-                    const html = compiled({
-                        url: user.habrPMUrl,
-                        title,
-                        text,
-                    });
-                    const link = createElementFromHTML(html);
-
-                    this.injectCSSToPage(css);
-
-                    userBlock.insertBefore(
-                        link,
-                        userBlock.querySelector('.user-summary__nickname')
-                            .nextElementSibling
-                    );
-
-                    this.setBodyAttribute(
-                        FeaturesAttribute.SHOW_AUTHOR_PM_LINK,
-                        'enabled'
-                    );
+                    return;
                 }
+
+                const name = (userBlock.querySelector(
+                    '.user-summary__name'
+                ) as HTMLDivElement).innerText.trim();
+                const nick = (userBlock.querySelector(
+                    '.user-summary__nickname'
+                ) as HTMLDivElement).innerText
+                    .trim()
+                    .replace(/\s+/g, '')
+                    .replace(/^@/, '');
+                const user = new User(name, nick);
+                const title = browser.i18n.getMessage('pmLinkTitle');
+                const text = browser.i18n.getMessage('pmLinkText');
+                const compiled = template(linkHtml);
+                const html = compiled({
+                    url: user.habrPMUrl,
+                    title,
+                    text,
+                });
+                const link = createElementFromHTML(html);
+
+                this.injectCSSToPage(css);
+
+                userBlock.insertBefore(
+                    link,
+                    userBlock.querySelector('.user-summary__nickname')
+                        .nextElementSibling
+                );
+
+                this.setBodyAttribute(
+                    FeaturesAttribute.SHOW_AUTHOR_PM_LINK,
+                    'enabled'
+                );
             }
         );
     }

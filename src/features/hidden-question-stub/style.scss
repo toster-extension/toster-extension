@@ -1,0 +1,22 @@
+body[data-feature-hiddenquestionstub="enabled"] {
+  #question_show.hidden {
+    display: none;
+  }
+
+  .hidden-question-stub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    .image {
+      margin-bottom: 30px;
+    }
+
+    .text {
+      font-size: 18px;
+      max-width: 370px;
+      text-align: center;
+    }
+  }
+}

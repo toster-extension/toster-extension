@@ -13,13 +13,15 @@ export class ExpandToFullWidth extends Feature {
             (features: FeaturesCollection) => {
                 this.features = features;
 
-                if (this.features.expandToFullWidth) {
-                    this.setBodyAttribute(
-                        FeaturesAttribute.EXPAND_TO_FULL_WIDTH,
-                        'enabled'
-                    );
-                    this.injectCSSToPage(css);
+                if (!this.features.expandToFullWidth) {
+                    return;
                 }
+
+                this.setBodyAttribute(
+                    FeaturesAttribute.EXPAND_TO_FULL_WIDTH,
+                    'enabled'
+                );
+                this.injectCSSToPage(css);
             }
         );
     }

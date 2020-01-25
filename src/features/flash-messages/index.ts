@@ -20,48 +20,48 @@ export class FlashMessages extends Feature {
             '.flash-notices[role="notices_container_flash"]'
         );
 
-        if (container) {
-            const existsMessage = !!container.querySelector(
-                `[data-flash-id="${message.id}"]`
-            );
+        if (!container) {
+            return;
+        }
 
-            if (existsMessage) {
-                return;
-            }
+        const existsMessage = !!container.querySelector(`[data-flash-id="${message.id}"]`);
 
-            let className = '';
+        if (existsMessage) {
+            return;
+        }
 
-            switch (message.type) {
-                case FlashMessageType.INFO:
-                default:
-                    className = 'alert_info';
-                    break;
-                case FlashMessageType.WARNING:
-                    className = 'alert_warning';
-                    break;
-                case FlashMessageType.ERROR:
-                    className = 'alert_error';
-                    break;
-                case FlashMessageType.SUCCESS:
-                    className = 'alert_success';
-                    break;
-            }
+        let className = '';
 
-            const compiled = template(messageHtml);
-            const html = compiled({
-                className,
-                messageId: message.id,
-                messageHtml: message.html,
-            });
-            container.appendChild(createElementFromHTML(html));
+        switch (message.type) {
+            case FlashMessageType.INFO:
+            default:
+                className = 'alert_info';
+                break;
+            case FlashMessageType.WARNING:
+                className = 'alert_warning';
+                break;
+            case FlashMessageType.ERROR:
+                className = 'alert_error';
+                break;
+            case FlashMessageType.SUCCESS:
+                className = 'alert_success';
+                break;
+        }
 
-            if (message.handler) {
-                document
-                    .querySelector(`[data-flash-id="${message.id}"]`)
-                    .addEventListener(message.handler.type, () =>
-                        this.injectJavaScriptToPage(message.handler.event)
-                    );
-            }
+        const compiled = template(messageHtml);
+        const html = compiled({
+            className,
+            messageId: message.id,
+            messageHtml: message.html,
+        });
+        container.appendChild(createElementFromHTML(html));
+
+        if (message.handler) {
+            document
+                .querySelector(`[data-flash-id="${message.id}"]`)
+                .addEventListener(message.handler.type, () =>
+                    this.injectJavaScriptToPage(message.handler.event)
+                );
         }
     }
 

@@ -47,6 +47,7 @@ export interface FeaturesCollection {
     hideTopPanel?: boolean;
     expandToFullWidth?: boolean;
     scrollToTop?: boolean;
+    hiddenQuestionStub?: boolean;
 }
 
 export enum FeaturesAttribute {
@@ -86,6 +87,7 @@ export enum FeaturesAttribute {
     HIDE_TOP_PANEL = 'HIDE_TOP_PANEL',
     EXPAND_TO_FULL_WIDTH = 'EXPAND_TO_FULL_WIDTH',
     SCROLL_TO_TOP = 'SCROLL_TO_TOP',
+    HIDDEN_QUESTION_STUB = 'HIDDEN_QUESTION_STUB',
 }
 
 export enum EventType {

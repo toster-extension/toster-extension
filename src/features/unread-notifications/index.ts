@@ -14,9 +14,11 @@ export class UnreadNotifications extends Feature {
         this.eventBus.on(
             EventType.NOTIFICATIONS_UPDATE,
             (notifications: NotificationsData) => {
-                if (this.features.checkNotifications) {
-                    this.updateNotifications(notifications);
+                if (!this.features.checkNotifications) {
+                    return;
                 }
+
+                this.updateNotifications(notifications);
             }
         );
     }

@@ -13,22 +13,24 @@ export class HideDecisionQuestions extends Feature {
                 this.features = features;
 
                 if (
-                    this.features.hideDecisionQuestions &&
-                    !this.onQuestionPage &&
-                    !this.onUserQuestionsPage &&
-                    this.questionsList.length
+                    !this.features.hideDecisionQuestions ||
+                    this.onQuestionPage ||
+                    this.onUserQuestionsPage ||
+                    !this.questionsList.length
                 ) {
-                    this.questionsList.forEach((question: HTMLElement) => {
-                        if (question.querySelector('.icon_svg.icon_check')) {
-                            question.parentElement.removeChild(question);
-                        }
-                    });
-
-                    this.setBodyAttribute(
-                        FeaturesAttribute.HIDE_DECISION_QUESTIONS,
-                        'enabled'
-                    );
+                    return;
                 }
+
+                this.questionsList.forEach((question: HTMLElement) => {
+                    if (question.querySelector('.icon_svg.icon_check')) {
+                        question.parentElement.removeChild(question);
+                    }
+                });
+
+                this.setBodyAttribute(
+                    FeaturesAttribute.HIDE_DECISION_QUESTIONS,
+                    'enabled'
+                );
             }
         );
     }

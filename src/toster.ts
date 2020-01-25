@@ -9,6 +9,7 @@ import {
     DoublePagination,
     ExpandToFullWidth,
     FlashMessages,
+    HiddenQuestionStub,
     HideBlacklistAuthorsQuestions,
     HideBlacklistTagsQuestions,
     HideDecisionQuestions,
@@ -61,7 +62,7 @@ const eventBus = new Observable();
 class Toster {
     private get questionsIds (): string[] {
         const questionsList = document.querySelectorAll(
-            '.content-list__item[role="content-list_item"]'
+            '.page__body .content-list[role="content-list"] .content-list__item[role="content-list_item"]'
         );
 
         if (questionsList) {
@@ -172,6 +173,7 @@ class Toster {
 
         const features: Feature[] = [
             new ExpandToFullWidth(),
+            new HiddenQuestionStub(),
             new MonospaceFont(),
             new WrapSpoilerCodeBlocks(),
             new HideBlacklistTagsQuestions(),
@@ -229,6 +231,10 @@ class Toster {
         browser.runtime.sendMessage(<MessageData>{
             type: MessageType.SET_OR_UPDATE_QUESTION,
             data: { questionId: id },
+        });
+        browser.runtime.sendMessage(<MessageData>{
+            type: MessageType.GET_QUESTIONS,
+            data: { questionsIds: [id] },
         });
     }
 }

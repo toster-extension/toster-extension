@@ -16,29 +16,31 @@ export class UseKeyboardSubmitForm extends Feature {
                 this.features = features;
 
                 if (
-                    this.features.useKeyboardSubmitForm &&
-                    this.onQuestionPage
+                    !this.features.useKeyboardSubmitForm ||
+                    !this.onQuestionPage
                 ) {
-                    document.addEventListener('keydown', (event) => {
-                        if (
-                            (event.ctrlKey || event.metaKey) &&
-                            (event.keyCode === 13 || event.keyCode === 10)
-                        ) {
-                            this.ctrlEnterHandler(event);
-                        }
-                    });
-
-                    document.addEventListener('click', (event) =>
-                        this.deleteButtonClickHandler(event)
-                    );
-
-                    this.setPlaceholder();
-
-                    this.setBodyAttribute(
-                        FeaturesAttribute.USE_KEYBOARD_SUBMIT_FORM,
-                        'enabled'
-                    );
+                    return;
                 }
+
+                document.addEventListener('keydown', (event) => {
+                    if (
+                        (event.ctrlKey || event.metaKey) &&
+                        (event.keyCode === 13 || event.keyCode === 10)
+                    ) {
+                        this.ctrlEnterHandler(event);
+                    }
+                });
+
+                document.addEventListener('click', (event) =>
+                    this.deleteButtonClickHandler(event)
+                );
+
+                this.setPlaceholder();
+
+                this.setBodyAttribute(
+                    FeaturesAttribute.USE_KEYBOARD_SUBMIT_FORM,
+                    'enabled'
+                );
             }
         );
     }
