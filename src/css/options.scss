@@ -1,101 +1,101 @@
 label {
-    display: block;
-    cursor: pointer;
+  display: block;
+  cursor: pointer;
 }
 
 input[type="file"] {
-    display: none;
+  display: none;
 }
 
 .row, .column {
-    display: flex;
+  display: flex;
 }
 
 .row {
-    flex-direction: row;
-    padding-top: 15px;
+  flex-direction: row;
+  padding-top: 15px;
 
-    &__no-padding {
-        padding-top: 0;
-    }
+  &__no-padding {
+    padding-top: 0;
+  }
 }
 
 .column {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 h1 {
-    margin: 0 auto !important;
+  margin: 0 auto !important;
 
-    span {
-        font-size: 20px;
-    }
+  span {
+    font-size: 20px;
+  }
 }
 
 .container {
-    border-bottom: none;
-    border-top: none;
-    padding: 0 0 10px;
+  border-bottom: none;
+  border-top: none;
+  padding: 0 0 10px;
 }
 
 .toolbar {
-    padding-bottom: 15px;
+  padding-bottom: 15px;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
+
+  .info {
+    order: 1;
 
     @media (max-width: 800px) {
-        flex-direction: column;
+      padding-top: 15px;
+      order: 2;
     }
+  }
 
-    .info {
-        order: 1;
+  .buttons {
+    order: 2;
 
-        @media (max-width: 800px) {
-            padding-top: 15px;
-            order: 2;
-        }
+    @media (max-width: 800px) {
+      order: 1;
     }
-
-    .buttons {
-        order: 2;
-
-        @media (max-width: 800px) {
-            order: 1;
-        }
-    }
+  }
 }
 
 a,
 a:hover,
 a:active,
 a:visited {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .form-group {
-    label {
-        span {
-            @media (max-width: 420px) {
-                font-size: 14px;
-            }
-        }
+  label {
+    span {
+      @media (max-width: 420px) {
+        font-size: 14px;
+      }
     }
+  }
 
-    &:not(:last-child) {
-        @media (max-width: 420px) {
-            margin-bottom: 0 !important;
-        }
+  &:not(:last-child) {
+    @media (max-width: 420px) {
+      margin-bottom: 0 !important;
     }
+  }
 }
 
 .option-list {
-    .multiselect {
-        input {
-            color: #000000;
-        }
+  .multiselect {
+    input {
+      color: #000000;
     }
+  }
 
-    .row:last-child {
-        @media (max-width: 460px) {
-            flex-direction: column;
-        }
+  .row:last-child {
+    @media (max-width: 460px) {
+      flex-direction: column;
     }
+  }
 }

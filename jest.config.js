@@ -3,7 +3,7 @@ const path = require('path')
 module.exports = {
     rootDir: path.resolve(__dirname),
     verbose: true,
-    silent: true,
+    silent: false,
     bail: true,
     testEnvironment: 'jsdom',
     moduleFileExtensions: ['ts', 'js', 'json', 'vue'],
@@ -12,7 +12,7 @@ module.exports = {
         '^@/(.*)$': '<rootDir>/src/$1',
         '^assets/(.*)': '<rootDir>/assets/$1'
     },
-    setupFiles: ['<rootDir>/test/setup.js'],
+    setupFiles: ['jest-localstorage-mock', '<rootDir>/test/setup.js'],
     transform: {
         '.*\\.(png|jpe?g|gif|svg)$': '<rootDir>/test/fileTransformer.js',
         '.*\\.(s?css)$': '<rootDir>/node_modules/jest-css-modules',

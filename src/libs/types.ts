@@ -88,13 +88,10 @@ export interface UpdateIconParams {
 }
 
 export interface Tag {
-    id?: TagId;
     name: string;
     slug: string;
     image: string;
 }
-
-export type TagId = Brand<number, Tag>;
 
 export interface BlackListAuthor {
     name: string;
