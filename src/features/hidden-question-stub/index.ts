@@ -1,4 +1,4 @@
-import template from 'lodash/template';
+import { template } from 'lodash-es';
 import { browser } from 'webextension-polyfill-ts';
 import {
     EventType,

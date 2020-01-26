@@ -1,4 +1,4 @@
-import template from 'lodash/template';
+import { template } from 'lodash-es';
 import { EventType, FeaturesAttribute } from '@/features/types';
 import { Feature } from '@/entity/feature';
 import { FlashMessage, FlashMessageType } from '@/libs/types';

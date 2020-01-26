@@ -1,3 +1,5 @@
-const chrome = require('sinon-chrome')
+require('jest-fetch-mock').enableMocks();
 
-window.chrome = chrome
+const chrome = require('sinon-chrome');
+
+window.chrome = chrome;

@@ -1,9 +1,5 @@
-import isEmpty from 'lodash/isEmpty';
-import {
-    EventType,
-    FeaturesAttribute,
-    FeaturesCollection,
-} from '@/features/types';
+import { isEmpty } from 'lodash-es';
+import { EventType, FeaturesAttribute, FeaturesCollection } from '@/features/types';
 import { Feature } from '@/entity/feature';
 
 export class SaveTextBeforeFormSending extends Feature {

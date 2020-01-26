@@ -1,5 +1,5 @@
 import { browser } from 'webextension-polyfill-ts';
-import capitalize from 'lodash/capitalize';
+import { capitalize } from 'lodash-es';
 import { Component, Inject, Prop, Vue, Watch } from 'vue-property-decorator';
 import { OptionBoolean } from '@/options/components/option-boolean';
 import { OptionNumber } from '@/options/components/option-number';

@@ -1,8 +1,4 @@
-import uniqBy from 'lodash/uniqBy';
-import get from 'lodash/get';
-import set from 'lodash/set';
-import isObject from 'lodash/isObject';
-import isArray from 'lodash/isArray';
+import { get, isArray, isObject, set, uniqBy } from 'lodash-es';
 import { StorageType } from '@/libs/types';
 
 export class Storage {

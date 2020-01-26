@@ -1,10 +1,6 @@
-import template from 'lodash/template';
+import { template } from 'lodash-es';
 import { browser } from 'webextension-polyfill-ts';
-import {
-    EventType,
-    FeaturesAttribute,
-    FeaturesCollection,
-} from '@/features/types';
+import { EventType, FeaturesAttribute, FeaturesCollection } from '@/features/types';
 import { Feature } from '@/entity/feature';
 import { User } from '@/entity/user';
 import { createElementFromHTML } from '@/libs/utils';

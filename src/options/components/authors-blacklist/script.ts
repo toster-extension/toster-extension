@@ -1,5 +1,5 @@
 import { browser } from 'webextension-polyfill-ts';
-import uniqBy from 'lodash/uniqBy';
+import { uniqBy } from 'lodash-es';
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator';
 import { OptionBoolean } from '@/options/components/option-boolean';
 import { Question } from '@/entity/question';

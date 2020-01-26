@@ -1,4 +1,4 @@
-import capitalize from 'lodash/capitalize';
+import { capitalize } from 'lodash-es';
 import { Component, Inject, Prop, Vue, Watch } from 'vue-property-decorator';
 import { Storage } from '@/libs/storage';
 import { FeaturesCollection } from '@/features';

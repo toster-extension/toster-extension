@@ -3,27 +3,32 @@ import { TOSTER_URL } from '@/libs/constants';
 export class HTTP {
     constructor (private baseUrl: string = TOSTER_URL) {}
 
-    async get (url: string) {
+    async get (url: string, responseType: ResponseType = 'html') {
         const requestUrl = this.makeUrl(url);
         const config = this.getConfig('GET');
 
         try {
             const response = await fetch(requestUrl, config);
 
-            return Promise.resolve(response.text());
+            return Promise.resolve(responseType === 'html' ? response.text() : response.json());
         } catch (error) {
             throw error;
         }
     }
 
-    async post (url: string, headers: Headers = null, body: BodyInit = '') {
+    async post (
+        url: string,
+        headers: Headers = null,
+        body: BodyInit = '',
+        responseType: ResponseType = 'html'
+    ) {
         const requestUrl = this.makeUrl(url);
         const config = this.getConfig('POST', headers, body);
 
         try {
             const response = await fetch(requestUrl, config);
 
-            return Promise.resolve(response.text());
+            return Promise.resolve(responseType === 'html' ? response.text() : response.json());
         } catch (error) {
             throw error;
         }
@@ -64,3 +69,5 @@ export class HTTP {
         return config;
     }
 }
+
+export type ResponseType = 'html' | 'json';

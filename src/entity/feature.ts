@@ -1,4 +1,4 @@
-import camelCase from 'lodash/camelCase';
+import { camelCase } from 'lodash-es';
 import { Observable } from 'typescript-observable';
 import { FeaturesAttribute, FeaturesCollection } from '@/features';
 import { EventType } from '@/features/types';
@@ -37,13 +37,13 @@ export abstract class Feature {
 
     protected get questionsList (): HTMLLIElement[] {
         const questionsList = document.querySelectorAll<HTMLLIElement>(
-            '.content-list__item[role="content-list_item"]'
+            '.page__body .content-list[role="content-list"] .content-list__item[role="content-list_item"]'
         );
 
         return questionsList ? Array.from(questionsList) : [];
     }
 
-    protected get top24QuestionsList (): NodeListOf<HTMLDivElement> | any[] {
+    protected get top24QuestionsList (): HTMLLIElement[] {
         const questionsList = document.querySelectorAll<HTMLLIElement>(
             'aside.column_sidebar [role="most_interest"] .content-list.content-list_sidebar-block > .content-list__item'
         );
@@ -71,7 +71,7 @@ export abstract class Feature {
         return user;
     }
 
-    public setObservers (eventBus: Observable): void {
+    setObservers (eventBus: Observable): void {
         this.eventBus = eventBus;
 
         this.eventBus.on(
@@ -82,11 +82,7 @@ export abstract class Feature {
         );
     }
 
-    public async execute (): Promise<void> {
-        return new Promise((resolve) => {
-            resolve();
-        });
-    }
+    async execute (): Promise<void> {}
 
     protected getAuthorBlock (
         author: User,
@@ -113,14 +109,12 @@ export abstract class Feature {
         featureName: FeaturesAttribute,
         value: string
     ): void {
-        document.body.setAttribute(
-            `data-feature-${camelCase(featureName)}`,
-            value
-        );
+        document.body.setAttribute(`data-feature-${camelCase(featureName)}`, value);
     }
 
     protected removeQuestionById (id: QuestionId): void {
         const element = document.querySelector(`[data-question-id="${id}"]`);
+
         if (element) {
             element.parentElement.removeChild(element);
         }
@@ -158,6 +152,7 @@ export abstract class Feature {
     ): HTMLUListElement {
         const ul = document.createElement('ul');
         ul.className = 'tags-list';
+
         tags.forEach((tag: Tag) => {
             const li = document.createElement('li');
             const tagLink = document.createElement('a');
@@ -165,6 +160,7 @@ export abstract class Feature {
             if (includeImage) {
                 const imageLink = document.createElement('a');
                 const imageImg = document.createElement('img');
+
                 imageLink.className = 'question__tags-image';
                 imageLink.href = `${TOSTER_URL}/tag/${tag.slug}`;
                 imageImg.className = 'tag__image tag__image_bg';

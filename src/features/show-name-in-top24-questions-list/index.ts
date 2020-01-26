@@ -23,7 +23,7 @@ export class ShowNameInTop24QuestionsList extends Feature {
 
     /* jscpd:ignore-start */
     private showAuthor (questions: Question[]) {
-        this.top24QuestionsList.forEach((element: HTMLDivElement) => {
+        this.top24QuestionsList.forEach((element: HTMLLIElement) => {
             const id = <QuestionId>element.getAttribute('data-question-id');
             const question = questions.find((item) => item.id === id);
             const authorBlock = <HTMLDivElement>this.getAuthorBlock(

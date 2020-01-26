@@ -1,9 +1,5 @@
-import debounce from 'lodash/debounce';
-import {
-    EventType,
-    FeaturesAttribute,
-    FeaturesCollection,
-} from '@/features/types';
+import { debounce } from 'lodash-es';
+import { EventType, FeaturesAttribute, FeaturesCollection } from '@/features/types';
 import { createElementFromHTML } from '@/libs/utils';
 import { Feature } from '@/entity/feature';
 import css from './style.scss';

@@ -1,6 +1,5 @@
 import { browser } from 'webextension-polyfill-ts';
-import capitalize from 'lodash/capitalize';
-import isEmpty from 'lodash/isEmpty';
+import { capitalize, isEmpty } from 'lodash-es';
 import { Component, Inject, Vue } from 'vue-property-decorator';
 import {
     AuthorsBlackist,
@@ -18,11 +17,7 @@ import { ListItem } from './components/option-list/types';
 import { Storage } from '@/libs/storage';
 import { Question } from '@/entity/question';
 import { MessageData, MessageType, Tag } from '@/libs/types';
-import {
-    defaultFeaturesCollection,
-    FeaturesCollection,
-    IconClickEvents,
-} from '@/features';
+import { defaultFeaturesCollection, FeaturesCollection, IconClickEvents } from '@/features';
 import { TOSTER_URL } from '@/libs/constants';
 
 const manifest = browser.runtime.getManifest();

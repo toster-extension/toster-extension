@@ -1,5 +1,4 @@
-import uniqBy from 'lodash/uniqBy';
-import get from 'lodash/get';
+import { get, uniqBy } from 'lodash-es';
 import { Alarms, browser } from 'webextension-polyfill-ts';
 import { Timer } from '@/libs/timer';
 import { HTTP } from '@/libs/http';
