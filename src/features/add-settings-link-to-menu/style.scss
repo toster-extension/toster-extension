@@ -1,5 +1,10 @@
 body[data-feature-addsettingslinktomenu="enabled"] {
   & .open-options-tab {
     cursor: pointer;
+
+    > svg {
+      margin-left: 8px;
+      margin-right: 14px;
+    }
   }
 }
