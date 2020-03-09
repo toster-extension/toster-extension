@@ -13,19 +13,19 @@ export class Question extends BaseEntity {
     }
 
     get isHiddenByAuthor (): boolean {
-        const { authorsBlacklist } = this.getOptions();
+        const { authorsBlacklist, useAuthorsBlackList } = this.getOptions();
 
-        return authorsBlacklist.includes(this.author.fullName);
+        return useAuthorsBlackList ? authorsBlacklist.includes(this.author.fullName) : false;
     }
 
     get isHiddenByTags (): boolean {
-        const { tagsBlacklist } = this.getOptions();
+        const { tagsBlacklist, useTagsBlackList } = this.getOptions();
 
-        return !!this.tags.filter((tag: Tag) =>
+        return useTagsBlackList ? !!this.tags.filter((tag: Tag) =>
             tagsBlacklist
                 .map((blackTag: Tag) => blackTag.name.toLowerCase().trim())
                 .includes(tag.name.toLowerCase().trim())
-        ).length;
+        ).length : false;
     }
 
     private getOptions (): FeaturesCollection {

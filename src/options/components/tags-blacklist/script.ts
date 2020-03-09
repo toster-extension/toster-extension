@@ -3,7 +3,7 @@ import { uniqBy } from 'lodash-es';
 import { Component, Inject, Vue, Watch } from 'vue-property-decorator';
 import { OptionBoolean } from '@/options/components/option-boolean';
 import { Storage } from '@/libs/storage';
-import { Tag } from '@/libs/types';
+import { MessageData, MessageType, Tag } from '@/libs/types';
 import { FeaturesCollection } from '@/features';
 
 @Component({
@@ -32,6 +32,10 @@ export default class TagsBlackist extends Vue {
     updateBooleanOptions (value: boolean) {
         this.storage.set<typeof value>('useTagsBlackList', value);
         this.showList = value;
+
+        browser.runtime.sendMessage(<MessageData>{
+            type: MessageType.UPDATE_OPTIONS,
+        });
     }
 
     cleanBlacklist () {

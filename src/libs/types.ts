@@ -38,6 +38,7 @@ export enum MessageType {
     OPEN_OPTIONS_PAGE = 8,
     CLEAR_QUESTIONS = 9,
     ADD_USER_TO_BLACKLIST = 10,
+    REMOVE_USER_FROM_BLACKLIST = 11,
 }
 
 export interface Data {

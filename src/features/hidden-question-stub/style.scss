@@ -17,6 +17,10 @@ body[data-feature-hiddenquestionstub="enabled"] {
       font-size: 18px;
       max-width: 370px;
       text-align: center;
+
+      .user-link {
+        font-weight: 700;
+      }
     }
   }
 }
