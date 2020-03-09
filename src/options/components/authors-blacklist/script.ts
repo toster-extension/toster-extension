@@ -4,7 +4,7 @@ import { Component, Inject, Vue, Watch } from 'vue-property-decorator';
 import { OptionBoolean } from '@/options/components/option-boolean';
 import { Question } from '@/entity/question';
 import { Storage } from '@/libs/storage';
-import { BlackListAuthor } from '@/libs/types';
+import { BlackListAuthor, MessageData, MessageType } from '@/libs/types';
 import { FeaturesCollection } from '@/features';
 
 @Component({
@@ -61,6 +61,10 @@ export default class AuthorsBlackist extends Vue {
         if (key === 'useAuthorsBlackList') {
             this.showList = value;
         }
+
+        browser.runtime.sendMessage(<MessageData>{
+            type: MessageType.UPDATE_OPTIONS,
+        });
     }
 
     cleanBlacklist () {

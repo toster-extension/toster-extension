@@ -66,10 +66,30 @@ export class HiddenQuestionStub extends Feature {
 
         if (question.isHiddenByAuthor) {
             message = browser.i18n.getMessage(
-                'hiddenQuestionStubHiddenByAuthorText', [question.author.fullName]
+                'hiddenQuestionStubHiddenByAuthorText',
+                [
+                    question.author.tosterUserPageUrl,
+                    question.author.fullName,
+                ]
             );
         } else if (question.isHiddenByTags) {
-            message = browser.i18n.getMessage('hiddenQuestionStubHiddenByTag');
+            const tagsBlacklist = this.features.tagsBlacklist.map((tag) => tag.name);
+            const tags = question.tags.map((tag) => tag.name);
+            const intersection = tagsBlacklist.filter((tagName) => tags.includes(tagName));
+            const tagsGreatOne = intersection.length > 1;
+            const lastTagName = intersection.length > 1 ? intersection.pop() : intersection[0];
+            let tagsString = '';
+
+            if (tagsGreatOne) {
+                tagsString = `${intersection.map((tagName) => `<b>${tagName}</b>`).join(', ')} и <b>${lastTagName}</b>`;
+            } else {
+                tagsString = `<b>${lastTagName}</b>`;
+            }
+
+            message = browser.i18n.getMessage(
+                tagsGreatOne ? 'hiddenQuestionStubHiddenByTags' : 'hiddenQuestionStubHiddenByTag',
+                [tagsString]
+            );
         }
 
         const compiled = template(stubHtml);

@@ -29,12 +29,20 @@ describe('Question', () => {
             expect(question.isHiddenByAuthor).toEqual(false);
         });
 
-        it('is false if authorsBlacklist does not contain the author name', () => {
+        it('is false if useAuthorsBlackList is false', () => {
+            storage.set<boolean>('useAuthorsBlackList', false);
+            storage.set<string[]>('authorsBlacklist', [author.fullName]);
+            expect(question.isHiddenByAuthor).toEqual(false);
+        });
+
+        it('is false if authorsBlacklist does not contain the author name and useAuthorsBlackList is true', () => {
+            storage.set<boolean>('useAuthorsBlackList', true);
             storage.set<string[]>('authorsBlacklist', ['name @nickname']);
             expect(question.isHiddenByAuthor).toEqual(false);
         });
 
-        it('is true if authorsBlacklist does contain the author name', () => {
+        it('is true if authorsBlacklist does contain the author name and useAuthorsBlackList is true', () => {
+            storage.set<boolean>('useAuthorsBlackList', true);
             storage.set<string[]>('authorsBlacklist', [author.fullName]);
             expect(question.isHiddenByAuthor).toEqual(true);
         });
@@ -45,7 +53,20 @@ describe('Question', () => {
             expect(question.isHiddenByTags).toEqual(false);
         });
 
-        it('is false if tagsBlacklist does not contain any tags', () => {
+        it('is false if useTagsBlackList is false', () => {
+            storage.set<boolean>('useTagsBlackList', false);
+            const tagsBlacklist = [{
+                name: 'black-name',
+                slug: 'black-name-slug',
+                image: '',
+            }];
+            storage.set<Tag[]>('tagsBlacklist', tagsBlacklist);
+            question = new Question(questionId, author, tagsBlacklist);
+            expect(question.isHiddenByTags).toEqual(false);
+        });
+
+        it('is false if tagsBlacklist does not contain any tags and useTagsBlackList is true', () => {
+            storage.set<boolean>('useTagsBlackList', true);
             storage.set<Tag[]>('tagsBlacklist', [{
                 name: 'black-name',
                 slug: 'black-name-slug',
@@ -59,7 +80,8 @@ describe('Question', () => {
             expect(question.isHiddenByTags).toEqual(false);
         });
 
-        it('is true if tagsBlacklist does contain any tags', () => {
+        it('is true if tagsBlacklist does contain any tags and useTagsBlackList is true', () => {
+            storage.set<boolean>('useTagsBlackList', true);
             const tagsBlacklist = [{
                 name: 'black-name',
                 slug: 'black-name-slug',

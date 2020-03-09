@@ -9,7 +9,7 @@
     "message": "Расширение браузера Toster Extension. Улучшает возможности сайта Хабр Q&A"
   },
   "flashMessagesOptionsChanged": {
-    "message": "Настройки $name$ изменены. Чтобы изменения вступили в силу необходимо обновить страницу.",
+    "message": "Настройки <b>$name$</b> изменены. Чтобы изменения вступили в силу необходимо обновить страницу.",
     "placeholders": {
       "name": {
         "content": "$1",
@@ -19,6 +19,15 @@
   },
   "flashMessagesUserAddToBlacklist": {
     "message": "Пользователь <b>$fullname$</b> добавлен в чёрный список. Чтобы скрыть все его записи необходимо обновить страницу.",
+    "placeholders": {
+      "fullname": {
+        "content": "$1",
+        "example": "User @nickname"
+      }
+    }
+  },
+  "flashMessagesUserRemoveFromBlacklist": {
+    "message": "Пользователь <b>$fullname$</b> удалён из чёрного списка. Чтобы отобразить все его записи необходимо обновить страницу.",
     "placeholders": {
       "fullname": {
         "content": "$1",
@@ -77,8 +86,11 @@
   "pmLinkText": {
     "message": "Написать"
   },
-  "userBlacklistButtonTitle": {
+  "addUserBlacklistButtonTitle": {
     "message": "В чёрный список"
+  },
+  "removeUserBlacklistButtonTitle": {
+    "message": "Убрать из чёрного списка"
   },
   "buttonOK": {
     "message": "OK"
@@ -297,15 +309,34 @@
     "message": "Отображать заглушку, если вопрос скрыт с помощью чёрного списка"
   },
   "hiddenQuestionStubHiddenByAuthorText": {
-    "message": "Вопрос скрыт, так как его автор $authorName$ находится в чёрном списке",
+    "message": "Вопрос скрыт, так как его автор <a class=\"user-link\" href=\"$href$\">$authorName$</a> находится в чёрном списке",
     "placeholders": {
-      "authorName": {
+      "href": {
         "content": "$1",
+        "example": "https://qna.habr.com/user/username"
+      },
+      "authorName": {
+        "content": "$2",
         "example": "Name @nickname"
       }
     }
   },
   "hiddenQuestionStubHiddenByTag": {
-    "message": "Вопрос скрыт, так как один или несколько тегов находятся в чёрном списке"
+    "message": "Вопрос скрыт, так как тег $tag$ находится в чёрном списке",
+    "placeholders": {
+      "tag": {
+        "content": "$1",
+        "example": "tag"
+      }
+    }
+  },
+  "hiddenQuestionStubHiddenByTags": {
+    "message": "Вопрос скрыт, так как теги $tags$ находятся в чёрном списке",
+    "placeholders": {
+      "tags": {
+        "content": "$1",
+        "example": "tag, other tag and simple tag"
+      }
+    }
   }
 }
