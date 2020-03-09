@@ -8,7 +8,6 @@ import {
 import { Feature } from '@/entity/feature';
 import { createElementFromHTML } from '@/libs/utils';
 import { MessageData, MessageType } from '@/libs/types';
-import { TOSTER_URL } from '@/libs/constants';
 import css from './style.scss';
 import menuItemHtml from './menu-item.html';
 
@@ -27,8 +26,18 @@ export class AddSettingsLinkToMenu extends Feature {
                     return;
                 }
 
+                const use = document.querySelector<SVGUseElement>(
+                    '.main-menu__notifications-settings svg.icon_menu_settings_tracker > use'
+                );
+
+                if (!use) {
+                    return;
+                }
+
+                const href = use.getAttribute('href');
+                const text = browser.i18n.getMessage('extension_name');
                 const compiled = template(menuItemHtml);
-                const html = compiled({TOSTER_URL});
+                const html = compiled({href, text});
                 const menuItem = createElementFromHTML(html);
                 menuItem.querySelector('a').addEventListener('click', (e) => {
                         e.preventDefault();
