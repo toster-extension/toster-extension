@@ -1,13 +1,14 @@
 import { template } from 'lodash-es';
 import { browser } from 'webextension-polyfill-ts';
 import { EventType, FeaturesAttribute, FeaturesCollection } from '@/features/types';
-import { Feature } from '@/entity/feature';
 import { User } from '@/entity/user';
+import { Feature } from '@/entity/feature';
 import { createElementFromHTML } from '@/libs/utils';
+import { MessageData, MessageType } from '@/libs/types';
 import css from './style.scss';
-import linkHtml from './link.html';
+import iconHtml from './icon.html';
 
-export class ShowAuthorPMLink extends Feature {
+export class ShowUserBlacklistButton extends Feature {
     async execute (): Promise<void> {
         const userBlock = document.querySelector('.user-summary__desc');
 
@@ -18,7 +19,7 @@ export class ShowAuthorPMLink extends Feature {
                 this.features = features;
 
                 if (
-                    !this.features.showAuthorPMLink ||
+                    !this.features.showUserBlacklistButton ||
                     !this.onQuestionPage ||
                     !userBlock
                 ) {
@@ -36,26 +37,29 @@ export class ShowAuthorPMLink extends Feature {
                     .replace(/^@/, '');
                 const user = new User(name, nick);
                 /* jscpd:ignore-end */
-                const title = browser.i18n.getMessage('pmLinkTitle');
-                const text = browser.i18n.getMessage('pmLinkText');
-                const compiled = template(linkHtml);
-                const html = compiled({
-                    url: user.habrPMUrl,
-                    title,
-                    text,
+
+                const title = browser.i18n.getMessage('userBlacklistButtonTitle');
+                const compiled = template(iconHtml);
+                const html = compiled({title});
+                const icon = createElementFromHTML(html);
+
+                icon.addEventListener('click', () => {
+                    browser.runtime.sendMessage(<MessageData>{
+                        type: MessageType.ADD_USER_TO_BLACKLIST,
+                        data: {user},
+                    });
                 });
-                const link = createElementFromHTML(html);
 
                 this.injectCSSToPage(css);
 
                 userBlock.insertBefore(
-                    link,
+                    icon,
                     userBlock.querySelector('.user-summary__nickname')
                         .nextElementSibling
                 );
 
                 this.setBodyAttribute(
-                    FeaturesAttribute.SHOW_AUTHOR_PM_LINK,
+                    FeaturesAttribute.SHOW_USER_BLACKLIST_BUTTON,
                     'enabled'
                 );
             }

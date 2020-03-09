@@ -37,6 +37,7 @@ export enum MessageType {
     SHOW_FLASH_MESSAGES = 7,
     OPEN_OPTIONS_PAGE = 8,
     CLEAR_QUESTIONS = 9,
+    ADD_USER_TO_BLACKLIST = 10,
 }
 
 export interface Data {

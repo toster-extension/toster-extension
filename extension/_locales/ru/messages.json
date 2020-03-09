@@ -17,6 +17,15 @@
       }
     }
   },
+  "flashMessagesUserAddToBlacklist": {
+    "message": "Пользователь <b>$fullname$</b> добавлен в чёрный список. Чтобы скрыть все его записи необходимо обновить страницу.",
+    "placeholders": {
+      "fullname": {
+        "content": "$1",
+        "example": "User @nickname"
+      }
+    }
+  },
   "notificationsUnreadTitle": {
     "message": "Новые события на Хабр Q&A"
   },
@@ -67,6 +76,9 @@
   },
   "pmLinkText": {
     "message": "Написать"
+  },
+  "userBlacklistButtonTitle": {
+    "message": "В чёрный список"
   },
   "buttonOK": {
     "message": "OK"
@@ -238,6 +250,9 @@
   },
   "optionsShowAuthorPMLink": {
     "message": "Показывать ссылку на ЛС юзера рядом с именем"
+  },
+  "optionsShowUserBlacklistButton": {
+    "message": "Показывать кнопку \"Добавить в чёрный список\" рядом с именем"
   },
   "optionsCheckNotifications": {
     "message": "Включить реалтайм показ новых уведомлений"
