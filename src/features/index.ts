@@ -30,6 +30,7 @@ export * from './hide-top-panel';
 export * from './expand-to-full-width';
 export * from './scroll-to-top';
 export * from './hidden-question-stub';
+export * from './show-user-blacklist-button';
 export * from './types';
 
 export const defaultFeaturesCollection: FeaturesCollection = {
@@ -80,4 +81,5 @@ export const defaultFeaturesCollection: FeaturesCollection = {
     expandToFullWidth: false,
     scrollToTop: false,
     hiddenQuestionStub: false,
+    showUserBlacklistButton: false,
 };

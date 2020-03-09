@@ -9,3 +9,11 @@
 ![](../images/screenshots/pm-link-question-page.png)
 
 ![](../images/screenshots/pm-link-questions-list.png)
+
+- - -
+
+**Показывать кнопку "Добавить в чёрный список" рядом с именем**
+
+Опция показывает кнопку "Добавить в чёрный список" рядом с именем автора вопроса на странице вопроса.
+
+![](../images/screenshots/show-user-blacklist-button.png)

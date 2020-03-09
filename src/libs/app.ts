@@ -69,6 +69,10 @@ export class App {
                     case MessageType.CLEAR_QUESTIONS:
                         this.clearDataBase();
                         break;
+                    case MessageType.ADD_USER_TO_BLACKLIST:
+                        this.addUserToBlacklist(request.data.user);
+                        this.updateDataBase();
+                        break;
                 }
 
                 if (data) {
@@ -231,6 +235,27 @@ export class App {
                 }
             }
         }
+    }
+
+    private addUserToBlacklist (user: User) {
+        const blacklist = this.configStorage.get('authorsBlacklist', []);
+        blacklist.push(user.fullName);
+        this.configStorage.set<string[]>('authorsBlacklist', blacklist);
+
+        this.sendFlashMessagesToContentSctipt([
+            {
+                id: 1,
+                html: browser.i18n.getMessage(
+                    'flashMessagesUserAddToBlacklist',
+                    [user.fullName]
+                ),
+                type: FlashMessageType.SUCCESS,
+                handler: {
+                    type: FlashMessageHandlerType.CLICK,
+                    event: 'window.location.reload();',
+                },
+            },
+        ]);
     }
 
     private async sendFlashMessagesToContentSctipt (

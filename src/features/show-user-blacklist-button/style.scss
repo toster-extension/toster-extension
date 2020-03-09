@@ -1,0 +1,10 @@
+body[data-feature-showuserblacklistbutton="enabled"] {
+  & .user-summary__blacklist-icon {
+    margin-bottom: -10px;
+    cursor: pointer;
+
+    & > svg {
+      transform: translate(0px, 5px);
+    }
+  }
+}

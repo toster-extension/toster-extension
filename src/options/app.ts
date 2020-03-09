@@ -118,7 +118,10 @@ export default class OptionsApp extends Vue {
     }
 
     get userBooleanOptions (): string[] {
-        return ['showAuthorPMLink'];
+        return [
+            'showAuthorPMLink',
+            'showUserBlacklistButton',
+        ];
     }
 
     get notificationsBooleanOptions (): string[] {

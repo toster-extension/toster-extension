@@ -48,6 +48,7 @@ export interface FeaturesCollection {
     expandToFullWidth?: boolean;
     scrollToTop?: boolean;
     hiddenQuestionStub?: boolean;
+    showUserBlacklistButton?: boolean,
 }
 
 export enum FeaturesAttribute {
@@ -88,6 +89,7 @@ export enum FeaturesAttribute {
     EXPAND_TO_FULL_WIDTH = 'EXPAND_TO_FULL_WIDTH',
     SCROLL_TO_TOP = 'SCROLL_TO_TOP',
     HIDDEN_QUESTION_STUB = 'HIDDEN_QUESTION_STUB',
+    SHOW_USER_BLACKLIST_BUTTON = 'SHOW_USER_BLACKLIST_BUTTON',
 }
 
 export enum EventType {
