@@ -268,7 +268,10 @@ export default class OptionsApp extends Vue {
 
     updatePrimitiveOption (value: boolean, optionKey: string): void {
         this.storage.set<typeof value>(optionKey, value);
-        this.$forceUpdate();
+        this.emitToApp();
+        this.$nextTick(() => {
+            this.$forceUpdate();
+        });
     }
 
     updateListOptions (value: string[], optionKey: string): void {

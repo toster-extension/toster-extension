@@ -6,7 +6,8 @@ import { Feature } from '@/entity/feature';
 import { createElementFromHTML } from '@/libs/utils';
 import { MessageData, MessageType } from '@/libs/types';
 import css from './style.scss';
-import iconHtml from './icon.html';
+import addIconHtml from './add-icon.html';
+import returnIconHtml from './return-icon.html';
 
 export class ShowUserBlacklistButton extends Feature {
     async execute (): Promise<void> {
@@ -38,17 +39,34 @@ export class ShowUserBlacklistButton extends Feature {
                 const user = new User(name, nick);
                 /* jscpd:ignore-end */
 
-                const title = browser.i18n.getMessage('userBlacklistButtonTitle');
-                const compiled = template(iconHtml);
-                const html = compiled({title});
-                const icon = createElementFromHTML(html);
+                let icon: HTMLElement = null;
 
-                icon.addEventListener('click', () => {
-                    browser.runtime.sendMessage(<MessageData>{
-                        type: MessageType.ADD_USER_TO_BLACKLIST,
-                        data: {user},
+                if (!this.features.authorsBlacklist.includes(user.fullName)) {
+                    const title = browser.i18n.getMessage('addUserBlacklistButtonTitle');
+                    const compiled = template(addIconHtml);
+                    const html = compiled({title});
+                    icon = createElementFromHTML(html);
+
+                    icon.addEventListener('click', () => {
+                        browser.runtime.sendMessage(<MessageData>{
+                            type: MessageType.ADD_USER_TO_BLACKLIST,
+                            data: {user},
+                        });
                     });
-                });
+
+                } else {
+                    const title = browser.i18n.getMessage('removeUserBlacklistButtonTitle');
+                    const compiled = template(returnIconHtml);
+                    const html = compiled({title});
+                    icon = createElementFromHTML(html);
+
+                    icon.addEventListener('click', () => {
+                        browser.runtime.sendMessage(<MessageData>{
+                            type: MessageType.REMOVE_USER_FROM_BLACKLIST,
+                            data: {user},
+                        });
+                    });
+                }
 
                 this.injectCSSToPage(css);
 

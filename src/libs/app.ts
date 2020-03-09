@@ -32,8 +32,6 @@ import tagsList from 'assets/tags.json';
 const http = new HTTP();
 
 export class App {
-    private questionsStorage: Storage = new Storage(StorageType.APP);
-    private configStorage: Storage = new Storage(StorageType.OPTIONS);
     private notificationsTimer: Timer = null;
     private useNotificationsFlag: boolean = true;
 
@@ -73,6 +71,10 @@ export class App {
                         this.addUserToBlacklist(request.data.user);
                         this.updateDataBase();
                         break;
+                    case MessageType.REMOVE_USER_FROM_BLACKLIST:
+                        this.removeUserFromBlacklist(request.data.user);
+                        this.updateDataBase();
+                        break;
                 }
 
                 if (data) {
@@ -104,7 +106,8 @@ export class App {
     }
 
     alarmHandler (alarm: Alarms.Alarm) {
-        const config = this.configStorage.getAll<FeaturesCollection>();
+        const configStorage = new Storage(StorageType.OPTIONS);
+        const config = configStorage.getAll<FeaturesCollection>();
 
         switch (alarm.name) {
             case AlarmsType.CHECK_NOTIFICATIONS:
@@ -157,11 +160,13 @@ export class App {
     }
 
     clearDataBase (): void {
-        this.questionsStorage.set<Question[]>('questions', []);
+        const questionsStorage = new Storage(StorageType.APP);
+        questionsStorage.set<Question[]>('questions', []);
     }
 
     async checkNotifications () {
-        const config = this.configStorage.getAll<FeaturesCollection>();
+        const configStorage = new Storage(StorageType.OPTIONS);
+        const config = configStorage.getAll<FeaturesCollection>();
         const html = await http.get(TOSTER_TRACKER_PATH);
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
@@ -238,15 +243,45 @@ export class App {
     }
 
     private addUserToBlacklist (user: User) {
-        const blacklist = this.configStorage.get('authorsBlacklist', []);
+        const configStorage = new Storage(StorageType.OPTIONS);
+        const blacklist = configStorage.get('authorsBlacklist', []);
         blacklist.push(user.fullName);
-        this.configStorage.set<string[]>('authorsBlacklist', blacklist);
+        configStorage.set<string[]>('authorsBlacklist', blacklist);
 
         this.sendFlashMessagesToContentSctipt([
             {
                 id: 1,
                 html: browser.i18n.getMessage(
                     'flashMessagesUserAddToBlacklist',
+                    [user.fullName]
+                ),
+                type: FlashMessageType.SUCCESS,
+                handler: {
+                    type: FlashMessageHandlerType.CLICK,
+                    event: 'window.location.reload();',
+                },
+            },
+        ]);
+    }
+
+    private removeUserFromBlacklist (user: User) {
+        const configStorage = new Storage(StorageType.OPTIONS);
+        const blacklist = configStorage.get<string[]>('authorsBlacklist', []);
+        const index = blacklist.findIndex((fullName) => user.fullName === fullName);
+
+        if (index < 0) {
+            return;
+        }
+
+        blacklist.splice(index, 1);
+
+        configStorage.set<string[]>('authorsBlacklist', blacklist);
+
+        this.sendFlashMessagesToContentSctipt([
+            {
+                id: 2,
+                html: browser.i18n.getMessage(
+                    'flashMessagesUserRemoveFromBlacklist',
                     [user.fullName]
                 ),
                 type: FlashMessageType.SUCCESS,
@@ -280,6 +315,7 @@ export class App {
     }
 
     private syncAndStartAlarms () {
+        const configStorage = new Storage(StorageType.OPTIONS);
         const restartNotificationTimer = (config: FeaturesCollection) => {
             this.notificationsTimer = new Timer(
                 AlarmsType.CHECK_NOTIFICATIONS,
@@ -291,7 +327,7 @@ export class App {
         };
 
         restartNotificationTimer(
-            this.configStorage.getAll<FeaturesCollection>()
+            configStorage.getAll<FeaturesCollection>()
         );
     }
 
@@ -341,7 +377,8 @@ export class App {
     }
 
     private async getQuestionById (id: QuestionId): Promise<Question> {
-        const questions = this.questionsStorage.get<Question[]>(
+        const questionsStorage = new Storage(StorageType.APP);
+        const questions = questionsStorage.get<Question[]>(
             'questions',
             []
         );
@@ -391,7 +428,7 @@ export class App {
 
         question = new Question(id, author, tags);
 
-        this.questionsStorage.push<Question>('questions', question);
+        questionsStorage.push<Question>('questions', question);
 
         return question;
     }
@@ -432,7 +469,8 @@ export class App {
     }
 
     private updateDataBase (): void {
-        const questions = this.questionsStorage.get<Question[]>(
+        const questionsStorage = new Storage(StorageType.APP);
+        const questions = questionsStorage.get<Question[]>(
             'questions',
             []
         );
@@ -442,7 +480,7 @@ export class App {
             return new Question(question.id, user, question.tags);
         });
 
-        this.questionsStorage.set('questions', [
+        questionsStorage.set('questions', [
             ...uniqBy<Question>(newQuestions, 'id'),
         ]);
     }
