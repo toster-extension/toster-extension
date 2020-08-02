@@ -49,6 +49,7 @@ export interface FeaturesCollection {
     scrollToTop?: boolean;
     hiddenQuestionStub?: boolean;
     showUserBlacklistButton?: boolean,
+    hidePartnerMaterialsBlock?: boolean,
 }
 
 export enum FeaturesAttribute {
@@ -90,6 +91,7 @@ export enum FeaturesAttribute {
     SCROLL_TO_TOP = 'SCROLL_TO_TOP',
     HIDDEN_QUESTION_STUB = 'HIDDEN_QUESTION_STUB',
     SHOW_USER_BLACKLIST_BUTTON = 'SHOW_USER_BLACKLIST_BUTTON',
+    HIDE_PARTNER_MATERIALS_BLOCK = 'HIDE_PARTNER_MATERIALS_BLOCK',
 }
 
 export enum EventType {
