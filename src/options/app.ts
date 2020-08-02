@@ -110,6 +110,7 @@ export default class OptionsApp extends Vue {
             'hideVacanciesAndOrdersBlock',
             'hideTopPanel',
             'hideAdvertisingBlock',
+            'hidePartnerMaterialsBlock',
         ];
     }
 

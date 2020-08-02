@@ -308,6 +308,9 @@
   "optionsHiddenQuestionStub": {
     "message": "Отображать заглушку, если вопрос скрыт с помощью чёрного списка"
   },
+  "optionsHidePartnerMaterialsBlock": {
+    "message": "Скрыть блок \"Партнёрские материалы\""
+  },
   "hiddenQuestionStubHiddenByAuthorText": {
     "message": "Вопрос скрыт, так как его автор <a class=\"user-link\" href=\"$href$\">$authorName$</a> находится в чёрном списке",
     "placeholders": {
