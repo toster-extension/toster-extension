@@ -50,6 +50,8 @@ export class UseKeyboardSubmitForm extends Feature {
             const form = <HTMLFormElement>event.target.form;
             const button = <HTMLButtonElement>(
                 form.querySelector('button[type="submit"]')
+            ) || <HTMLButtonElement>(
+                form.querySelector('button[role="btn_submit"]')
             );
             if (button) {
                 button.removeAttribute('disabled');
