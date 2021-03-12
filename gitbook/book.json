@@ -33,7 +33,7 @@
   "variables": {
     "appName": "Toster Extension",
     "appNameLower": "toster-extension",
-    "appVersion": "2.5.10",
+    "appVersion": "2.5.12",
     "chromeLink": "https://chrome.google.com/webstore/detail/toster-extension/edbifjhhbolcnccchgdenjnlidcoadae",
     "firefoxLink": "https://addons.mozilla.org/firefox/addon/toster-extension",
     "operaLink": "https://addons.opera.com/extensions/details/toster-extension",
