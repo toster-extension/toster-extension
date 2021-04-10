@@ -9,15 +9,17 @@ $ git clone git@github.com:toster-extension/toster-extension.git
 $ cd toster-extension
 $ cp .env.dist .env
 $ yarn
-$ yarn tags
-$ yarn build
+$ yarn tags -o assets/tags.json
+$ yarn watch
 ```
+
+Теперь можно установить распакованное расширение и при изменении файлов будет обновляться страница и обновляться расширение.
 
 **Спарсить все теги с Тостера (используется [toster-tags-parser](https://github.com/toster-extension/toster-tags-parser))**
 
 ```shell
 $ yarn tags
-# Можно указать количество страниц для парсинга. По-умолчанию 62 страницы.
+# Можно указать количество страниц для парсинга. По-умолчанию 60 страниц.
 $ yarn tags -p[--pages] 10
 # Обязательный аргумент - путь для сохранения тегов.
 $ yarn tags -o[--output] assets/tags.json
