@@ -200,6 +200,9 @@
   "optionsHideMostInterestingBlock": {
     "message": "Скрыть блок \"Самое интересное за 24 часа\""
   },
+  "optionsHideMegapostsBlock": {
+    "message": "Скрыть блок \"МИНУТОЧКУ ВНИМАНИЯ\""
+  },
   "optionsDoublePagination": {
     "message": "Дублировать пагинацию над списком вопросов"
   },

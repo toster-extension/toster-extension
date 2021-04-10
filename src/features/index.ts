@@ -32,6 +32,7 @@ export * from './scroll-to-top';
 export * from './hidden-question-stub';
 export * from './show-user-blacklist-button';
 export * from './hide-partner-materials-block';
+export * from './hide-megaposts-block';
 export * from './types';
 
 export const defaultFeaturesCollection: FeaturesCollection = {
@@ -42,6 +43,7 @@ export const defaultFeaturesCollection: FeaturesCollection = {
     hideMostInterestingBlock: false,
     hideRecomendationsBlock: false,
     hideAdvertisingBlock: false,
+    hideMegapostsBlock: false,
     doublePagination: false,
     hideDecisionQuestions: false,
     useKeyboardSubmitForm: false,

@@ -37,3 +37,11 @@
 Опция скрывает блок "Партнёрские материалы" с всех страниц.
 
 ![](../images/screenshots/hide-partner-materials-block.png)
+
+---
+
+**Скрыть блок "МИНУТОЧКУ ВНИМАНИЯ"**
+
+Опция скрывает блок "МИНУТОЧКУ ВНИМАНИЯ" с всех страниц.
+
+![](../images/screenshots/hide-megaposts-block.png)

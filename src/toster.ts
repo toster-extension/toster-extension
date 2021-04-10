@@ -13,6 +13,7 @@ import {
     HideBlacklistAuthorsQuestions,
     HideBlacklistTagsQuestions,
     HideDecisionQuestions,
+    HideMegapostsBlock,
     HidePartnerMaterialsBlock,
     HideRelatedIssuesBlock,
     HideRightSidebarBlock,
@@ -206,6 +207,7 @@ class Toster {
             new ScrollToTop(),
             new QuestionPreview(),
             new UserProfilePreview(),
+            new HideMegapostsBlock(),
         ];
 
         await Promise.all(

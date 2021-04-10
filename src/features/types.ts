@@ -8,6 +8,7 @@ export interface FeaturesCollection {
     hideMostInterestingBlock?: boolean;
     hideRecomendationsBlock?: boolean;
     hideAdvertisingBlock?: boolean;
+    hideMegapostsBlock?: boolean;
     doublePagination?: boolean;
     hideDecisionQuestions?: boolean;
     useKeyboardSubmitForm?: boolean;
@@ -60,6 +61,7 @@ export enum FeaturesAttribute {
     HIDE_MOST_INTERESTING_BLOCK = 'HIDE_MOST_INTERESTING_BLOCK',
     HIDE_RECOMENDATIONS_BLOCK = 'HIDE_RECOMENDATIONS_BLOCK',
     HIDE_ADVERTISING_BLOCK = 'HIDE_ADVERTISING_BLOCK',
+    HIDE_MEGAPOSTS_BLOCK = 'HIDE_MEGAPOSTS_BLOCK',
     DOUBLE_PAGINATION = 'DOUBLE_PAGINATION',
     HIDE_DECISION_QUESTIONS = 'HIDE_DECISION_QUESTIONS',
     USE_KEYBOARD_SUBMIT_FORM = 'USE_KEYBOARD_SUBMIT_FORM',
