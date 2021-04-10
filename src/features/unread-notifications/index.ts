@@ -7,45 +7,45 @@ let lastCount = 0;
 
 export class UnreadNotifications extends Feature {
     private favicon = new Favico({
-        animation: 'popFade',
+      animation: 'popFade',
     });
 
     async execute (): Promise<void> {
-        this.eventBus.on(
-            EventType.NOTIFICATIONS_UPDATE,
-            (notifications: NotificationsData) => {
-                if (!this.features.checkNotifications) {
-                    return;
-                }
+      this.eventBus.on(
+        EventType.NOTIFICATIONS_UPDATE,
+        (notifications: NotificationsData) => {
+          if (!this.features.checkNotifications) {
+            return;
+          }
 
-                this.updateNotifications(notifications);
-            }
-        );
+          this.updateNotifications(notifications);
+        }
+      );
     }
 
     private showNotificationsCountOnFavicon (count: number) {
-        if (count && count !== lastCount) {
-            this.favicon.badge(count);
-        } else if (!count) {
-            this.favicon.reset();
-        }
+      if (count && count !== lastCount) {
+        this.favicon.badge(count);
+      } else if (!count) {
+        this.favicon.reset();
+      }
 
-        lastCount = count;
+      lastCount = count;
     }
 
     private async updateNotifications (notifications: NotificationsData) {
-        const eventsList = document.querySelector('ul.events-list');
+      const eventsList = document.querySelector('ul.events-list');
 
-        if (eventsList) {
-            eventsList.innerHTML = notifications ? notifications.html : '';
-        }
+      if (eventsList) {
+        eventsList.innerHTML = notifications ? notifications.html : '';
+      }
 
-        if (this.features.showNotificationsCountOnFavicon) {
-            this.showNotificationsCountOnFavicon(
-                notifications ? notifications.count : 0
-            );
-        }
+      if (this.features.showNotificationsCountOnFavicon) {
+        this.showNotificationsCountOnFavicon(
+          notifications ? notifications.count : 0
+        );
+      }
 
-        this.setBodyAttribute(FeaturesAttribute.CHECK_NOTIFICATIONS, 'enabled');
+      this.setBodyAttribute(FeaturesAttribute.CHECK_NOTIFICATIONS, 'enabled');
     }
 }

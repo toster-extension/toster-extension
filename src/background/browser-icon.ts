@@ -7,15 +7,15 @@ import { TOSTER_URL } from '@/libs/constants';
 const storage = new Storage(StorageType.OPTIONS);
 
 export const browserActionOnClickHandler = () => {
-    const config = storage.getAll<FeaturesCollection>();
+  const config = storage.getAll<FeaturesCollection>();
 
-    switch (config.iconClickEvent) {
-        case IconClickEvents.OPEN_TOSTER:
-            browser.tabs.create({ url: TOSTER_URL });
-            break;
-        case IconClickEvents.OPEN_SETTINGS:
-        default:
-            browser.runtime.openOptionsPage();
-            break;
-    }
+  switch (config.iconClickEvent) {
+  case IconClickEvents.OPEN_TOSTER:
+    browser.tabs.create({ url: TOSTER_URL });
+    break;
+  case IconClickEvents.OPEN_SETTINGS:
+  default:
+    browser.runtime.openOptionsPage();
+    break;
+  }
 };

@@ -14,28 +14,26 @@ export default class OptionList extends Vue {
     value = null;
 
     private get config (): FeaturesCollection {
-        return this.storage.getAll<FeaturesCollection>();
+      return this.storage.getAll<FeaturesCollection>();
     }
 
     @Watch('value', { deep: true })
-    // @ts-ignore-line
-    private valueChange (value) {
-        if (value) {
-            this.$emit('change', value.name);
-        } else {
-            this.value = this.options[0];
-        }
+    valueChange (value) {
+      if (value) {
+        this.$emit('change', value.name);
+      } else {
+        this.value = this.options[0];
+      }
     }
 
-    // @ts-ignore-line
-    private created () {
-        const name = this.config[this.optionKey];
+    created () {
+      const name = this.config[this.optionKey];
 
-        this.value = {
-            name,
-            label: this.$i18n(
-                `options${capitalize(`${this.optionKey}${name}`)}`
-            ),
-        };
+      this.value = {
+        name,
+        label: this.$i18n(
+          `options${capitalize(`${this.optionKey}${name}`)}`
+        ),
+      };
     }
 }

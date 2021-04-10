@@ -9,143 +9,141 @@ export interface Options {
 @Component
 export default class Tabs extends Vue {
     @Prop({
-        type: Object,
-        default: () => ({
-            useUrlFragment: true,
-            defaultTabHash: null,
-        }),
+      type: Object,
+      default: () => ({
+        useUrlFragment: true,
+        defaultTabHash: null,
+      }),
     })
     options: Options;
 
     tabs: Tab[] = [];
-    activeTabHash: string = '';
-    activeTabIndex: number = 0;
-    lastActiveTabHash: string = '';
+    activeTabHash = '';
+    activeTabIndex = 0;
+    lastActiveTabHash = '';
 
     findTab (hash: string) {
-        return this.tabs.find((tab) => tab.hash === hash);
+      return this.tabs.find((tab) => tab.hash === hash);
     }
 
     selectTab (selectedTabHash: string, event: Event = null) {
-        if (event && !this.options.useUrlFragment) {
-            event.preventDefault();
-        }
+      if (event && !this.options.useUrlFragment) {
+        event.preventDefault();
+      }
 
-        const selectedTab = this.findTab(selectedTabHash);
+      const selectedTab = this.findTab(selectedTabHash);
 
-        if (!selectedTab) {
-            return;
-        }
+      if (!selectedTab) {
+        return;
+      }
 
-        if (selectedTab.isDisabled) {
-            event.preventDefault();
+      if (selectedTab.isDisabled) {
+        event.preventDefault();
 
-            return;
-        }
+        return;
+      }
 
-        if (this.lastActiveTabHash === selectedTab.hash) {
-            this.$emit('clicked', { tab: selectedTab });
+      if (this.lastActiveTabHash === selectedTab.hash) {
+        this.$emit('clicked', { tab: selectedTab });
 
-            return;
-        }
+        return;
+      }
 
-        this.tabs.forEach((tab) => {
-            tab.isActive = tab.hash === selectedTab.hash;
-        });
+      this.tabs.forEach((tab) => {
+        tab.isActive = tab.hash === selectedTab.hash;
+      });
 
-        this.$emit('changed', { tab: selectedTab });
+      this.$emit('changed', { tab: selectedTab });
 
-        this.activeTabHash = selectedTab.hash;
-        this.activeTabIndex = this.getTabIndex(selectedTabHash);
-        this.lastActiveTabHash = this.activeTabHash = selectedTab.hash;
+      this.activeTabHash = selectedTab.hash;
+      this.activeTabIndex = this.getTabIndex(selectedTabHash);
+      this.lastActiveTabHash = this.activeTabHash = selectedTab.hash;
     }
 
     setTabVisible (hash: string, visible: boolean) {
-        const tab = this.findTab(hash);
+      const tab = this.findTab(hash);
 
-        if (!tab) {
-            return;
-        }
+      if (!tab) {
+        return;
+      }
 
-        tab.isVisible = visible;
+      tab.isVisible = visible;
 
-        if (tab.isActive) {
-            tab.isActive = visible;
+      if (tab.isActive) {
+        tab.isActive = visible;
 
-            this.tabs.every((tabItem) => {
-                if (tabItem.isVisible) {
-                    tabItem.isActive = true;
+        this.tabs.every((tabItem) => {
+          if (tabItem.isVisible) {
+            tabItem.isActive = true;
 
-                    return false;
-                }
+            return false;
+          }
 
-                return true;
-            });
-        }
+          return true;
+        });
+      }
     }
 
     getTabIndex (hash: string) {
-        const tab = this.findTab(hash);
+      const tab = this.findTab(hash);
 
-        return this.tabs.indexOf(tab);
+      return this.tabs.indexOf(tab);
     }
 
     getTabHash (index: number) {
-        const tab = this.tabs.find(
-            (tabItem) => this.tabs.indexOf(tabItem) === index
-        );
+      const tab = this.tabs.find(
+        (tabItem) => this.tabs.indexOf(tabItem) === index
+      );
 
-        if (!tab) {
-            return;
-        }
+      if (!tab) {
+        return;
+      }
 
-        return tab.hash;
+      return tab.hash;
     }
 
     getActiveTab () {
-        return this.findTab(this.activeTabHash);
+      return this.findTab(this.activeTabHash);
     }
 
     getActiveTabIndex () {
-        return this.getTabIndex(this.activeTabHash);
+      return this.getTabIndex(this.activeTabHash);
     }
 
-    // @ts-ignore-line
-    private created () {
-        this.tabs = <Tab[]>this.$children;
+    created () {
+      this.tabs = <Tab[]>this.$children;
     }
 
-    // @ts-ignore-line
-    private mounted () {
-        window.addEventListener('hashchange', () =>
-            this.selectTab(window.location.hash)
-        );
+    mounted () {
+      window.addEventListener('hashchange', () =>
+        this.selectTab(window.location.hash)
+      );
 
-        if (this.findTab(window.location.hash)) {
-            this.selectTab(window.location.hash);
+      if (this.findTab(window.location.hash)) {
+        this.selectTab(window.location.hash);
 
-            return;
-        }
+        return;
+      }
 
-        const previousSelectedTabHash = this.lastActiveTabHash;
+      const previousSelectedTabHash = this.lastActiveTabHash;
 
-        if (this.findTab(previousSelectedTabHash)) {
-            this.selectTab(previousSelectedTabHash);
+      if (this.findTab(previousSelectedTabHash)) {
+        this.selectTab(previousSelectedTabHash);
 
-            return;
-        }
+        return;
+      }
 
-        if (
-            this.options.defaultTabHash &&
+      if (
+        this.options.defaultTabHash &&
             this.findTab(`#${this.options.defaultTabHash}`)
-        ) {
-            this.selectTab(`#${this.options.defaultTabHash}`);
+      ) {
+        this.selectTab(`#${this.options.defaultTabHash}`);
 
-            return;
-        }
+        return;
+      }
 
-        if (this.tabs.length) {
-            this.selectTab(this.tabs[0].hash);
-        }
+      if (this.tabs.length) {
+        this.selectTab(this.tabs[0].hash);
+      }
     }
 }

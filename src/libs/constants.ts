@@ -1,21 +1,22 @@
+declare const browser: any;
+
 function browserName () {
-    if (typeof chrome !== 'undefined') {
-        // @ts-ignore-line
-        if (typeof browser !== 'undefined') {
-            return 'Firefox';
-        }
-
-        if (
-            window.navigator.userAgent.toLowerCase().includes('opr') ||
-            window.navigator.userAgent.toLowerCase().includes('opera')
-        ) {
-            return 'Opera';
-        }
-
-        return 'Chrome';
+  if (typeof chrome !== 'undefined') {
+    if (typeof browser !== 'undefined') {
+      return 'Firefox';
     }
 
-    return 'Edge';
+    if (
+      window.navigator.userAgent.toLowerCase().includes('opr') ||
+            window.navigator.userAgent.toLowerCase().includes('opera')
+    ) {
+      return 'Opera';
+    }
+
+    return 'Chrome';
+  }
+
+  return 'Edge';
 }
 
 const isChrome = browserName() === 'Chrome';
@@ -30,8 +31,8 @@ export const TOSTER_TRACKER_PATH = '/my/tracker';
 export const TOSTER_QUESTION_PATH = '/q';
 
 export const EXTENSION_URL = isChrome
-    ? 'https://chrome.google.com/webstore/detail/toster-extension/edbifjhhbolcnccchgdenjnlidcoadae'
-    : isOpera
+  ? 'https://chrome.google.com/webstore/detail/toster-extension/edbifjhhbolcnccchgdenjnlidcoadae'
+  : isOpera
     ? 'https://addons.opera.com/extensions/details/toster-extension'
     : 'https://addons.mozilla.org/firefox/addon/toster-extension';
 

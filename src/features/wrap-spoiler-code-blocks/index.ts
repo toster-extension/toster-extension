@@ -6,62 +6,62 @@ import { createElementFromHTML } from '@/libs/utils';
 import spoilerHtml from './spoiler.html';
 
 export class WrapSpoilerCodeBlocks extends Feature {
-    async execute (): Promise<void> {
-        const codeBlocks = document.querySelectorAll('pre > code');
+  async execute (): Promise<void> {
+    const codeBlocks = document.querySelectorAll('pre > code');
 
-        this.eventBus.on(
-            EventType.FEATURES_UPDATE,
-            (features: FeaturesCollection) => {
-                this.features = features;
+    this.eventBus.on(
+      EventType.FEATURES_UPDATE,
+      (features: FeaturesCollection) => {
+        this.features = features;
 
-                if (
-                    !this.features.wrapSpoilerCodeBlocks ||
+        if (
+          !this.features.wrapSpoilerCodeBlocks ||
                     !this.onQuestionPage
-                ) {
-                    return;
-                }
+        ) {
+          return;
+        }
 
-                const blocks = Array.from(codeBlocks);
+        const blocks = Array.from(codeBlocks);
 
-                this.wrapCodeBlocks(blocks);
-            }
-        );
-    }
+        this.wrapCodeBlocks(blocks);
+      }
+    );
+  }
 
-    private wrapCodeBlocks (codeBlocks: Element[]) {
-        const spoilerText = browser.i18n.getMessage(
-            'codeSpoilerText'
-        );
-        const compiled = template(spoilerHtml);
-        const html = compiled({spoilerText});
-        const spoiler = createElementFromHTML(html);
+  private wrapCodeBlocks (codeBlocks: Element[]) {
+    const spoilerText = browser.i18n.getMessage(
+      'codeSpoilerText'
+    );
+    const compiled = template(spoilerHtml);
+    const html = compiled({spoilerText});
+    const spoiler = createElementFromHTML(html);
 
-        codeBlocks
-            .filter(
-                (item) =>
-                    !(item.parentNode
-                        .parentNode as HTMLElement).classList.contains(
-                        'spoiler_text'
-                    )
-            )
-            .forEach((block: HTMLElement) => {
-                const wrappedBlock = <HTMLElement>(
+    codeBlocks
+      .filter(
+        (item) =>
+          !(item.parentNode
+            .parentNode as HTMLElement).classList.contains(
+            'spoiler_text'
+          )
+      )
+      .forEach((block: HTMLElement) => {
+        const wrappedBlock = <HTMLElement>(
                     spoiler.cloneNode(true)
                 );
-                const lastChild = <HTMLElement>(
+        const lastChild = <HTMLElement>(
                     wrappedBlock.lastChild
                 );
-                lastChild.innerHTML = `<pre>${block.outerHTML}</pre>`;
+        lastChild.innerHTML = `<pre>${block.outerHTML}</pre>`;
 
-                block.parentElement.parentElement.replaceChild(
-                    wrappedBlock,
-                    block.parentElement
-                );
-            });
-
-        this.setBodyAttribute(
-            FeaturesAttribute.WRAP_SPOILER_CODE_BLOCKS,
-            'enabled'
+        block.parentElement.parentElement.replaceChild(
+          wrappedBlock,
+          block.parentElement
         );
-    }
+      });
+
+    this.setBodyAttribute(
+      FeaturesAttribute.WRAP_SPOILER_CODE_BLOCKS,
+      'enabled'
+    );
+  }
 }
