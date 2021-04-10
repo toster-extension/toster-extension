@@ -1,0 +1,8 @@
+node_modules
+assets
+docs
+extension
+
+*.d.ts
+jest.config.js
+web-ext-config.js

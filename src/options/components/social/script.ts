@@ -6,32 +6,32 @@ Vue.use(SocialSharing);
 
 @Component
 export default class Social extends Vue {
-    get extensionUrl (): string {
-        return EXTENSION_URL;
-    }
+  get extensionUrl (): string {
+    return EXTENSION_URL;
+  }
 
-    get extensionName (): string {
-        return this.$i18n('extension_name');
-    }
+  get extensionName (): string {
+    return this.$i18n('extension_name');
+  }
 
-    get extensionDescription (): string {
-        return this.$i18n('extension_description');
-    }
+  get extensionDescription (): string {
+    return this.$i18n('extension_description');
+  }
 
-    get overriddenNetworks () {
-        return {
-            review: {
-                sharer: FEEDBACK_URL,
-                type: 'direct',
-            },
-            chat: {
-                sharer: CHAT_URL,
-                type: 'direct',
-            },
-            beerpay: {
-                sharer: 'https://beerpay.io/yarkovaleksei/toster-extension',
-                type: 'direct',
-            },
-        };
-    }
+  get overriddenNetworks () {
+    return {
+      review: {
+        sharer: FEEDBACK_URL,
+        type: 'direct',
+      },
+      chat: {
+        sharer: CHAT_URL,
+        type: 'direct',
+      },
+      beerpay: {
+        sharer: 'https://beerpay.io/yarkovaleksei/toster-extension',
+        type: 'direct',
+      },
+    };
+  }
 }

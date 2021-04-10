@@ -7,10 +7,10 @@ import { Storage } from '@/libs/storage';
 import { FeaturesCollection } from '@/features';
 
 @Component({
-    components: {
-        OptionBoolean,
-        OptionNumber,
-    },
+  components: {
+    OptionBoolean,
+    OptionNumber,
+  },
 })
 export default class OptionBooleanNumber extends Vue {
     @Inject() storage: Storage;
@@ -18,31 +18,35 @@ export default class OptionBooleanNumber extends Vue {
     @Prop({ type: String, required: true }) numberName: string;
     @Prop({ type: String, default: 'msDelay' }) numberLabel: string;
 
-    booleanLabelText: string = browser.i18n.getMessage(
+    showNumber = false;
+    value = 0;
+
+    get booleanLabelText (): string {
+      return browser.i18n.getMessage(
         `options${capitalize(this.booleanName)}`
-    );
-    numberLabelText: string = browser.i18n.getMessage(this.numberLabel);
-    showNumber: boolean = false;
-    value: number = 0;
+      );
+    }
+
+    get numberLabelText (): string {
+      return browser.i18n.getMessage(this.numberLabel);
+    }
 
     get config (): FeaturesCollection {
-        return this.storage.getAll<FeaturesCollection>();
+      return this.storage.getAll<FeaturesCollection>();
     }
 
     updateBooleanOptions (value: boolean) {
-        this.storage.set<typeof value>(this.booleanName, value);
-        this.showNumber = value;
+      this.storage.set<typeof value>(this.booleanName, value);
+      this.showNumber = value;
     }
 
     @Watch('value')
-    // @ts-ignore-line
-    private valueChange (value: number) {
-        this.$emit('change', value);
+    valueChange (value: number) {
+      this.$emit('change', value);
     }
 
-    // @ts-ignore-line
-    private created () {
-        this.showNumber = this.config[this.booleanName];
-        this.value = this.config[this.numberName];
+    created () {
+      this.showNumber = this.config[this.booleanName];
+      this.value = this.config[this.numberName];
     }
 }

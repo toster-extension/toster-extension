@@ -8,22 +8,22 @@ export default class Tab extends Vue {
     @Prop({ type: String, default: '' }) suffix: string;
     @Prop({ type: Boolean, default: false }) isDisabled: boolean;
 
-    isActive: boolean = false;
-    isVisible: boolean = true;
+    isActive = false;
+    isVisible = true;
 
     get header (): string {
-        return this.prefix + this.name + this.suffix;
+      return this.prefix + this.name + this.suffix;
     }
 
     get computedId (): string {
-        return this.id || this.name.toLowerCase().replace(/ /g, '-');
+      return this.id || this.name.toLowerCase().replace(/ /g, '-');
     }
 
     get hash (): string {
-        if (this.isDisabled) {
-            return '#';
-        }
+      if (this.isDisabled) {
+        return '#';
+      }
 
-        return `#${this.computedId}`;
+      return `#${this.computedId}`;
     }
 }

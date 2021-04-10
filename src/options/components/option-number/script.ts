@@ -9,7 +9,7 @@ export default class OptionNumber extends Vue {
     @Prop({ type: Number, default: 500 }) step: number; // default step is 0.5 second
 
     input ($event: Event) {
-        const value = +($event.target as any).value;
-        this.$emit('input', value);
+      const value = +($event.target as any).value;
+      this.$emit('input', value);
     }
 }
