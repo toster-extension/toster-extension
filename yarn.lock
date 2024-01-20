@@ -3754,9 +3754,10 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
-"favico.js@https://github.com/ejci/favico.js.git":
+favico.js@0.3.10:
   version "0.3.10"
-  resolved "https://github.com/ejci/favico.js.git#6a3f430be559f93d96573e2a4a0116e154c11319"
+  resolved "https://registry.yarnpkg.com/favico.js/-/favico.js-0.3.10.tgz#80586e27a117f24a8d51c18a99bdc714d4339301"
+  integrity sha512-S5KvqAOczRjlyjQPPZPSlUEybBkfBgKosY/pzTIxkvKgigB+DkITvIEI70dxQarbv4PZ+UD77QzquCAcU/6LHQ==
 
 fb-watchman@^2.0.0:
   version "2.0.0"
@@ -10684,9 +10685,9 @@ toster-tags-parser@toster-extension/toster-tags-parser:
   dependencies:
     chalk "2.4.2"
     cli-progress "2.1.1"
-    minimist "1.2.2"
+    minimist "1.2.5"
     mkdirp-sync "0.0.3"
-    puppeteer "^1.12.2"
+    puppeteer "^1.13.0"
 
 tough-cookie@^2.3.3, tough-cookie@^2.3.4:
   version "2.5.0"

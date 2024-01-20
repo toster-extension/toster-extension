@@ -10,7 +10,7 @@
   },
   "bugs": "https://github.com/toster-extension/toster-extension/issues",
   "engines": {
-    "node": ">= 9.0.0",
+    "node": ">= 13.0.0",
     "npm": "^6.13.4"
   },
   "scripts": {
@@ -35,7 +35,7 @@
     "firefox:sign": "./firefox-sign.sh"
   },
   "dependencies": {
-    "favico.js": "https://github.com/ejci/favico.js.git",
+    "favico.js": "0.3.10",
     "lodash": "4.17.21",
     "lodash-es": "4.17.21",
     "spectre.css": "0.5.8",
